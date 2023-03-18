@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import eslint from 'vite-plugin-eslint';
+import path from 'path';
+import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
+import eslint from 'vite-plugin-eslint';
 
 export default defineConfig({
   plugins: [
@@ -34,5 +34,11 @@ export default defineConfig({
       all: true,
       reporter: 'text',
     },
+  },
+  resolve: {
+    alias: [
+      { find: '@pages', replacement: path.resolve(__dirname, './src/pages/index') },
+      { find: '@components', replacement: path.resolve(__dirname, './src/components/index') },
+    ],
   },
 });
