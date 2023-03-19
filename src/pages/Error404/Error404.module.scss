@@ -1,0 +1,25 @@
+@use '@scss/abstracts' as theme;
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  font-size: 2rem;
+
+  &__info {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  &__title {
+    margin: 0;
+    font-size: 18rem;
+    color: theme.$color-secondary;
+  }
+}

@@ -1,4 +1,4 @@
-import { MenuItem } from '@components';
+import { MenuItem } from 'components/types';
 
 const getPageTitle = (route: string, routes: MenuItem[]): string => {
   const result = routes.find((item) => item.route === route);

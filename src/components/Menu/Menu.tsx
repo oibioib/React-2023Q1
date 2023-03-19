@@ -13,7 +13,7 @@ export interface MenuItem {
 export interface MenuProps {
   links: MenuItem[];
 }
-class Menu extends Component<MenuProps, never> {
+class Menu extends Component<MenuProps, Record<string, never>> {
   render() {
     const { links } = this.props;
 

@@ -8,7 +8,7 @@ import layout from '@scss/layouts/layout.module.scss';
 
 import styles from './Header.module.scss';
 
-class Header extends Component<WithLocationProps, never> {
+class Header extends Component<WithLocationProps, Record<string, never>> {
   render() {
     const {
       location: { pathname },
