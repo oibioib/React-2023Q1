@@ -1,0 +1,36 @@
+@use '@scss/abstracts' as theme;
+
+.card {
+  background-color: theme.$color-bg-light;
+  border-radius: theme.$main-radius;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+  box-shadow: theme.$shadow-bottom;
+
+  &:hover {
+    box-shadow: theme.$shadow-bottom-intensive;
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+
+  &__info {
+    padding: theme.$main-gap;
+    display: flex;
+    flex-direction: column;
+    gap: calc(theme.$main-gap / 4);
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  &__brand {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+}
