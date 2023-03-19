@@ -1,3 +1,3 @@
-import { MENU_LINKS, ROUTES } from './appSettings';
+import { MENU_LINKS, ROUTES, STORAGE_KEYS, TEXT } from './appSettings';
 
-export { ROUTES, MENU_LINKS };
+export { ROUTES, MENU_LINKS, STORAGE_KEYS, TEXT };
