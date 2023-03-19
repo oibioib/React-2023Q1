@@ -1,0 +1,20 @@
+@use '@scss/abstracts' as theme;
+
+.header {
+  padding: theme.$main-gap 0;
+  background-color: theme.$color-primary;
+  box-shadow: theme.$shadow-bottom;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+}

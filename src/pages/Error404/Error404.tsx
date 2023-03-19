@@ -1,6 +1,6 @@
-import React from 'react';
+import { Component } from 'react';
 
-class Error404 extends React.Component {
+class Error404 extends Component {
   render() {
     return <h1>Error404</h1>;
   }
