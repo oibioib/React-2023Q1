@@ -16,7 +16,12 @@
     "resolveJsonModule": true,
     "paths": {
       "@pages": ["pages/index"],
-      "@components": ["components/index"]
+      "@components": ["components/index"],
+      "@layouts": ["layouts/index"],
+      "@constants": ["constants/index"],
+      "@hoc": ["hoc/index"],
+      "@helpers": ["helpers/index"],
+      "@scss": ["scss"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],

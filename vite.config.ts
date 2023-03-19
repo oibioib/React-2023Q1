@@ -6,6 +6,12 @@ import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint';
 
+const folders = ['pages', 'components', 'layouts', 'constants', 'hoc', 'helpers'];
+const aliases = folders.map((folder) => ({
+  find: `@${folder}`,
+  replacement: path.resolve(__dirname, `./src/${folder}/index`),
+}));
+
 export default defineConfig({
   plugins: [
     { ...react(), ...eslint(), apply: 'build' },
@@ -36,9 +42,6 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: [
-      { find: '@pages', replacement: path.resolve(__dirname, './src/pages/index') },
-      { find: '@components', replacement: path.resolve(__dirname, './src/components/index') },
-    ],
+    alias: [...aliases, { find: '@scss', replacement: path.resolve(__dirname, './src/scss') }],
   },
 });
