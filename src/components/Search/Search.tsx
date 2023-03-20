@@ -30,6 +30,7 @@ class Search extends Component<Record<string, never>, SearchState> {
     return (
       <div className={styles.search}>
         <input
+          data-testid="search"
           className={styles.search__input}
           type="text"
           placeholder={TEXT.PLACEHOLDERS.SEARCH}

@@ -23,7 +23,7 @@ class Card extends React.Component<CardProps, Record<string, never>> {
   render() {
     const { title, brand, image } = this.props.card;
     return (
-      <div className={styles.card}>
+      <div className={styles.card} data-testid="card">
         <div>
           <img className={styles.card__image} src={image} alt={`${brand} ${title}`} />
         </div>

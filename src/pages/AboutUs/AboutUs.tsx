@@ -4,6 +4,7 @@ class AboutUs extends Component {
   render() {
     return (
       <>
+        <p>Lorem ipsum</p>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, ratione ut eos maxime
           laboriosam debitis quia velit fugiat, consectetur et non esse aliquid asperiores vero
