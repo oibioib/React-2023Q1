@@ -3,7 +3,7 @@ import { Component } from 'react';
 class AboutUs extends Component {
   render() {
     return (
-      <>
+      <div data-testid="about">
         <p>Lorem ipsum</p>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, ratione ut eos maxime
@@ -47,7 +47,7 @@ class AboutUs extends Component {
           quae nisi saepe modi reiciendis aliquid tempora magnam architecto blanditiis odit, quos
           repudiandae?
         </p>
-      </>
+      </div>
     );
   }
 }

@@ -14,7 +14,7 @@ class Cards extends React.Component<CardsProps, Record<string, never>> {
     const { cards } = this.props;
 
     return (
-      <div className={styles.cards}>
+      <div className={styles.cards} data-testid="cards">
         {cards.map((card) => (
           <Card key={card.id} card={card} />
         ))}

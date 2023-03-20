@@ -8,26 +8,27 @@ import 'normalize.css';
 
 import './App.scss';
 
-class App extends Component {
-  render() {
-    const router = createBrowserRouter([
+export const routesConfig = [
+  {
+    path: '',
+    element: <BaseLayout />,
+    errorElement: <Error404 />,
+    children: [
       {
         path: '',
-        element: <BaseLayout />,
-        errorElement: <Error404 />,
-        children: [
-          {
-            path: '',
-            element: <MainPage />,
-          },
-          {
-            path: ROUTES.ABOUT_US,
-            element: <AboutUs />,
-          },
-        ],
+        element: <MainPage />,
       },
-    ]);
+      {
+        path: ROUTES.ABOUT_US,
+        element: <AboutUs />,
+      },
+    ],
+  },
+];
 
+class App extends Component {
+  render() {
+    const router = createBrowserRouter(routesConfig);
     return <RouterProvider router={router} />;
   }
 }
