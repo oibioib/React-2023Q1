@@ -3,6 +3,7 @@ import { MenuItem } from 'components/types';
 export const ROUTES = {
   MAIN: '/',
   ABOUT_US: 'about',
+  FORM: 'form',
 };
 
 export const MENU_LINKS: MenuItem[] = [
@@ -20,6 +21,12 @@ export const MENU_LINKS: MenuItem[] = [
   },
   {
     id: 3,
+    route: '/form',
+    title: 'Form',
+    anchor: 'Form',
+  },
+  {
+    id: 4,
     route: '/404',
     title: 'Error 404',
     anchor: '404',
