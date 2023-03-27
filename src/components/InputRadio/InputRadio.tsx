@@ -38,7 +38,7 @@ class InputRadio extends Component<InputRadioProps> {
     });
 
     return (
-      <div className={styles.radio}>
+      <div className={styles.radio} data-testid="form-element">
         <div className={styles.radio__option}>{renderOptions}</div>
         {!isValid && <ErrorMessage message={errorMessage} />}
       </div>

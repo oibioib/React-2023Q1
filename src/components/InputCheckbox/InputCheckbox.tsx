@@ -14,7 +14,7 @@ class InputCheckbox extends Component<InputCheckboxProps> {
     const { forwardedRef, labelText } = this.props;
     const id = getId().toString();
     return (
-      <div className={styles.checkbox}>
+      <div className={styles.checkbox} data-testid="form-element">
         <input type="checkbox" id={id} ref={forwardedRef} />
         <label htmlFor={id}>{labelText}</label>
       </div>

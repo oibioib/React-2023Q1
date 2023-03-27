@@ -11,7 +11,7 @@ class Alert extends React.Component<AlertProps, Record<string, never>> {
   render() {
     const { message, backgroundColor } = this.props;
     return (
-      <div className={styles.alert} style={{ backgroundColor }}>
+      <div className={styles.alert} style={{ backgroundColor }} data-testid="alert">
         <span>{message}</span>
       </div>
     );

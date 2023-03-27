@@ -43,7 +43,7 @@ export default defineConfig({
       provider: 'c8',
       all: true,
       reporter: 'text',
-      exclude: [...configDefaults.coverage.exclude, '**/index.ts', '**/types.ts'],
+      exclude: [...configDefaults.coverage.exclude, '**/index.ts', '**/types.ts', '**/main.tsx'],
     },
   },
   resolve: {

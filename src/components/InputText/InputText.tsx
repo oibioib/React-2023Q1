@@ -14,7 +14,7 @@ class InputText extends Component<InputTextProps> {
   render() {
     const { forwardedRef, errorMessage, isValid, placeholder } = this.props;
     return (
-      <div>
+      <div data-testid="form-element">
         <input
           ref={forwardedRef}
           type="text"

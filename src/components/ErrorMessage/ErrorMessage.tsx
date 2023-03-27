@@ -10,7 +10,10 @@ interface ErrorMessageProps {
 class ErrorMessage extends Component<ErrorMessageProps> {
   render() {
     return (
-      <div className={[elements.center, elements.warning, styles.error].join(' ')}>
+      <div
+        className={[elements.center, elements.warning, styles.error].join(' ')}
+        data-testid="error-message"
+      >
         {this.props.message}
       </div>
     );

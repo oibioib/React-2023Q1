@@ -13,7 +13,7 @@ class InputDate extends Component<InputDateProps> {
   render() {
     const { forwardedRef, errorMessage, isValid } = this.props;
     return (
-      <div>
+      <div data-testid="form-element">
         <input ref={forwardedRef} type="date" className={elements.input} />
         {!isValid && <ErrorMessage message={errorMessage} />}
       </div>

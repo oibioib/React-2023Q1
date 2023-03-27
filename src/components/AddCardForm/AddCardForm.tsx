@@ -146,7 +146,7 @@ class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
             isValid={isImageValid}
           />
 
-          <button type="submit" className={elements.button}>
+          <button type="submit" className={elements.button} data-testid="form-element">
             Submit
           </button>
         </form>

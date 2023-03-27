@@ -14,7 +14,7 @@ class Select extends Component<SelectProps> {
   render() {
     const { forwardedRef, errorMessage, isValid, options } = this.props;
     return (
-      <div>
+      <div data-testid="form-element">
         <select ref={forwardedRef} className={elements.input}>
           <option key="default" value="">
             Chose a brand

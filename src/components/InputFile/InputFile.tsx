@@ -12,7 +12,7 @@ class InputFile extends Component<InputTextProps> {
   render() {
     const { forwardedRef, errorMessage, isValid } = this.props;
     return (
-      <div>
+      <div data-testid="form-element">
         <input ref={forwardedRef} type="file" name="image" accept="image/*" />
         {!isValid && <ErrorMessage message={errorMessage} />}
       </div>
