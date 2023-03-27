@@ -7,14 +7,11 @@ describe('Card', () => {
   const card = {
     id: 1,
     title: 'Test title',
-    description: 'Test description',
-    price: 100,
-    discountPercentage: 10.0,
-    rating: 5.0,
-    stock: 100,
     brand: 'Test brand',
-    category: 'Test category',
     image: './cards/test.jpg',
+    date: '2023-01-01',
+    condition: 'new',
+    delivery: true,
   };
   it('Render single card', async () => {
     render(<Card card={card} />);
