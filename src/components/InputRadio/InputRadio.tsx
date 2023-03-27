@@ -1,5 +1,9 @@
 import { Component } from 'react';
 
+import { ErrorMessage } from '@components';
+
+import styles from './InputRadio.module.scss';
+
 type RadioOption = {
   id: string;
   title: string;
@@ -8,7 +12,7 @@ type RadioOption = {
 
 interface InputRadioProps {
   groupName: string;
-  errorMessage?: string;
+  errorMessage: string;
   isValid: boolean;
   options: RadioOption[];
 }
@@ -19,18 +23,25 @@ class InputRadio extends Component<InputRadioProps> {
 
     const renderOptions = options.map(({ title, forwardedRef, id }) => {
       return (
-        <div key={id}>
-          <input type="radio" name={groupName} id={id} ref={forwardedRef} data-value={title} />
+        <div key={id} className={styles.radio__block}>
+          <input
+            type="radio"
+            name={groupName}
+            id={id}
+            ref={forwardedRef}
+            data-value={title}
+            className={styles.radio__input}
+          />
           <label htmlFor={id}>{title}</label>
         </div>
       );
     });
 
     return (
-      <>
-        {renderOptions}
-        {!isValid && <div>{errorMessage}</div>}
-      </>
+      <div className={styles.radio}>
+        <div className={styles.radio__option}>{renderOptions}</div>
+        {!isValid && <ErrorMessage message={errorMessage} />}
+      </div>
     );
   }
 }

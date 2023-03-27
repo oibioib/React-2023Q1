@@ -1,0 +1,9 @@
+@use '@scss/abstracts' as theme;
+
+.form {
+  margin: theme.$main-gap;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

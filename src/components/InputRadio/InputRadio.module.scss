@@ -1,0 +1,24 @@
+@use '@scss/abstracts' as theme;
+
+.radio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: theme.$main-gap;
+  }
+
+  &__input {
+    margin-right: calc(theme.$main-gap / 4);
+  }
+}

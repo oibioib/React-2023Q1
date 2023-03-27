@@ -4,6 +4,8 @@ import { AddCardForm, Alert, Cards } from '@components';
 import { ALERT } from '@constants';
 import { CardItem } from 'components/types';
 
+import styles from './FormPage.module.scss';
+
 interface FormPageState {
   isAllert: boolean;
   cards: CardItem[];
@@ -33,7 +35,9 @@ class FormPage extends Component<Record<string, never>, FormPageState> {
         {isAllert && (
           <Alert message={ALERT.MESSAGES.CARD_SUCCESS} backgroundColor={ALERT.COLORS.SUCCESS} />
         )}
-        <AddCardForm onSubmit={this.onSubmit} />
+        <div className={styles.form_wrapper}>
+          <AddCardForm onSubmit={this.onSubmit} />
+        </div>
         <Cards cards={cards} />
       </>
     );

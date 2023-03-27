@@ -40,6 +40,7 @@ export const STORAGE_KEYS = {
 export const TEXT = {
   PLACEHOLDERS: {
     SEARCH: 'Search something...',
+    FORM_TITLE: 'Enter the title',
   },
   MESSAGES: {
     NOT_FOUND: 'Page not found!',

@@ -2,6 +2,7 @@ import AddCardForm from './AddCardForm/AddCardForm';
 import Alert from './Alert/Alert';
 import Card from './Card/Card';
 import Cards from './Cards/Cards';
+import ErrorMessage from './ErrorMessage/ErrorMessage';
 import InputCheckbox from './InputCheckbox/InputCheckbox';
 import InputDate from './InputDate/InputDate';
 import InputFile from './InputFile/InputFile';
@@ -24,4 +25,5 @@ export {
   InputCheckbox,
   InputRadio,
   InputFile,
+  ErrorMessage,
 };

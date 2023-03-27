@@ -1,9 +1,12 @@
 import React, { createRef } from 'react';
 
 import { InputCheckbox, InputDate, InputFile, InputRadio, InputText, Select } from '@components';
-import { BRANDS, CONDITION, DELIVERY, FORM_ERROR_MESSAGE, IMAGE_FORMATS } from '@constants';
+import { BRANDS, CONDITION, DELIVERY, FORM_ERROR_MESSAGE, IMAGE_FORMATS, TEXT } from '@constants';
 import { getId, validateForm } from '@helpers';
+import elements from '@scss/layouts/elements.module.scss';
 import { CardItem } from 'components/types';
+
+import styles from './AddCardForm.module.scss';
 
 interface AddCardFormProps {
   onSubmit: (card: CardItem) => void;
@@ -101,11 +104,12 @@ class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
 
     return (
       <>
-        <form onSubmit={this.onSubmitHandler} ref={form}>
+        <form onSubmit={this.onSubmitHandler} ref={form} className={styles.form}>
           <InputText
             forwardedRef={title}
             errorMessage={FORM_ERROR_MESSAGE.TITLE}
             isValid={isTitleValid}
+            placeholder={TEXT.PLACEHOLDERS.FORM_TITLE}
           />
           <Select
             forwardedRef={brand}
@@ -142,7 +146,9 @@ class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
             isValid={isImageValid}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" className={elements.button}>
+            Submit
+          </button>
         </form>
       </>
     );

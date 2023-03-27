@@ -1,0 +1,8 @@
+@use '@scss/abstracts' as theme;
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(theme.$main-gap / 4);
+}
