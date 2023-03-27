@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 
 import { InputCheckbox, InputDate, InputFile, InputRadio, InputText, Select } from '@components';
-import { BRANDS, CONDITION, DELIVERY, FORM_ERROR_MESSAGE, IMAGE_FORMATS, TEXT } from '@constants';
+import { BRANDS, CONDITION, DELIVERY, FORM_ERROR_MESSAGE, IMAGE_TYPES, TEXT } from '@constants';
 import { getId, validateForm } from '@helpers';
 import elements from '@scss/layouts/elements.module.scss';
 import { CardItem } from 'components/types';
@@ -59,12 +59,17 @@ class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
 
   validateCard = () => {
     const { title, brand, date, conditionNew, conditionUsed, image } = this.formRefs;
+    // const imageChoosen = image.current?.files?.length ? image.current?.files[0].type : '';
+
     const cardFields: AddCardFormState = {
       isTitleValid: validateForm.title(title.current?.value ?? ''),
       isBrandValid: validateForm.brand(brand.current?.value ?? '', BRANDS),
       isDateValid: validateForm.date(date.current?.value ?? ''),
       isConditionValid: conditionNew.current!.checked || conditionUsed.current!.checked,
-      isImageValid: validateForm.image(image.current?.value ?? '', IMAGE_FORMATS),
+      isImageValid: validateForm.image(
+        image.current?.files?.length ? image.current?.files[0].type : '',
+        IMAGE_TYPES
+      ),
     };
 
     this.setState(cardFields);

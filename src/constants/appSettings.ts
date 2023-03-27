@@ -85,4 +85,4 @@ export const DELIVERY = {
   IS_AVAILABLE: 'Delivery available?',
 };
 
-export const IMAGE_FORMATS = ['jpg', 'png'];
+export const IMAGE_TYPES = ['image/jpeg', 'image/png'];
