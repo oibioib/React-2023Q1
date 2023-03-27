@@ -5,4 +5,8 @@
   justify-content: center;
   align-items: center;
   gap: calc(theme.$main-gap / 4);
+
+  & > *:hover {
+    cursor: pointer;
+  }
 }

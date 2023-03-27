@@ -9,6 +9,10 @@
   &__block {
     display: flex;
     align-items: center;
+
+    & > *:hover {
+      cursor: pointer;
+    }
   }
 
   &__option {

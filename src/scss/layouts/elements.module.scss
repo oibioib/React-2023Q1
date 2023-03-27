@@ -17,6 +17,7 @@
 
   &:hover,
   &:focus {
+    cursor: pointer;
     box-shadow: inset 0px 0px 3px rgba(theme.$color-secondary, 0.08),
       inset 0px 2px 3px rgba(theme.$color-secondary, 0.16),
       0px 0px 0px 1px rgba(theme.$color-secondary, 0.2),
@@ -30,6 +31,7 @@
 
 .warning {
   color: theme.$color-warning;
+  font-size: 1.2rem;
 }
 
 .button {

@@ -45,6 +45,10 @@ export const TEXT = {
   MESSAGES: {
     NOT_FOUND: 'Page not found!',
     GO_MAIN: 'Go to main page!',
+    NO_FILE: 'No image selected',
+  },
+  BUTTONS: {
+    SELECT_IMAGE: 'Select an image',
   },
 };
 

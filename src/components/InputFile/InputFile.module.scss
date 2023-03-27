@@ -1,0 +1,57 @@
+@use '@scss/abstracts' as theme;
+
+.inputfile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__message {
+    text-align: center;
+    margin-top: calc(theme.$main-gap / 5);
+    font-size: 1.2rem;
+  }
+
+  &__hidden {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    & + label {
+      height: calc(theme.$main-gap * 2);
+      width: 100%;
+      padding: 0 calc(theme.$main-gap / 2);
+      border: 0;
+      outline: 0;
+      border-radius: theme.$main-radius;
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.02), inset 0px 2px 3px rgba(0, 0, 0, 0.03),
+        0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 0px 0px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.15s ease-in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: theme.$color-primary;
+        cursor: pointer;
+        box-shadow: inset 0px 0px 3px rgba(theme.$color-primary, 0.08),
+          inset 0px 2px 3px rgba(theme.$color-primary, 0.16),
+          0px 0px 0px 1px rgba(theme.$color-primary, 0.2),
+          0px 0px 0px 4px rgba(theme.$color-primary, 0.2);
+      }
+    }
+
+    &:focus {
+      & + label {
+        background-color: theme.$color-primary-dark;
+        cursor: pointer;
+        box-shadow: inset 0px 0px 3px rgba(theme.$color-primary, 0.08),
+          inset 0px 2px 3px rgba(theme.$color-primary, 0.16),
+          0px 0px 0px 1px rgba(theme.$color-primary, 0.2),
+          0px 0px 0px 4px rgba(theme.$color-primary, 0.2);
+      }
+    }
+  }
+}
