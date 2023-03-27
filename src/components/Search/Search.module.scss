@@ -4,9 +4,9 @@
   margin: theme.$main-gap 0;
 
   &__input {
-    height: 40px;
+    height: calc(theme.$main-gap * 2);
     width: 100%;
-    padding: 0 10px;
+    padding: 0 calc(theme.$main-gap / 2);
     border: 0;
     outline: 0;
     border-radius: theme.$main-radius;
