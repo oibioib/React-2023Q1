@@ -1,0 +1,17 @@
+@use './colors';
+
+$shadow-color-neutral: inset 0px 0px 3px rgba(0, 0, 0, 0.02), inset 0px 2px 3px rgba(0, 0, 0, 0.03),
+  0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 0px 0px 4px rgba(0, 0, 0, 0.05);
+
+$shadow-color-primary: inset 0px 0px 3px rgba(colors.$color-primary, 0.08),
+  inset 0px 2px 3px rgba(colors.$color-primary, 0.16),
+  0px 0px 0px 1px rgba(colors.$color-primary, 0.2), 0px 0px 0px 4px rgba(colors.$color-primary, 0.2);
+
+$shadow-color-secondary: inset 0px 0px 3px rgba(colors.$color-secondary, 0.08),
+  inset 0px 2px 3px rgba(colors.$color-secondary, 0.16),
+  0px 0px 0px 1px rgba(colors.$color-secondary, 0.2),
+  0px 0px 0px 4px rgba(colors.$color-secondary, 0.2);
+
+$shadow-color-warning: inset 0px 0px 3px rgba(colors.$color-warning, 0.08),
+  inset 0px 2px 3px rgba(colors.$color-warning, 0.16),
+  0px 0px 0px 1px rgba(colors.$color-warning, 0.2), 0px 0px 0px 4px rgba(colors.$color-warning, 0.2);

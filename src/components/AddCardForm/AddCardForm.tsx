@@ -3,7 +3,7 @@ import React, { createRef } from 'react';
 import { InputCheckbox, InputDate, InputFile, InputRadio, InputText, Select } from '@components';
 import { BRANDS, CONDITION, DELIVERY, FORM_ERROR_MESSAGE, IMAGE_TYPES, TEXT } from '@constants';
 import { getId, validateForm } from '@helpers';
-import elements from '@scss/layouts/elements.module.scss';
+import buttons from '@scss/components/buttons.module.scss';
 import { CardItem } from 'components/types';
 
 import styles from './AddCardForm.module.scss';
@@ -59,7 +59,6 @@ class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
 
   validateCard = () => {
     const { title, brand, date, conditionNew, conditionUsed, image } = this.formRefs;
-    // const imageChoosen = image.current?.files?.length ? image.current?.files[0].type : '';
 
     const cardFields: AddCardFormState = {
       isTitleValid: validateForm.title(title.current?.value ?? ''),
@@ -151,7 +150,7 @@ class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
             isValid={isImageValid}
           />
 
-          <button type="submit" className={elements.button} data-testid="form-element">
+          <button type="submit" className={buttons.button} data-testid="form-element">
             Submit
           </button>
         </form>

@@ -1,6 +1,6 @@
 @use '@scss/abstracts' as theme;
 
-.radio {
+.input-radio {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,9 @@
     align-items: center;
     justify-content: center;
     gap: theme.$main-gap;
+    width: 100%;
+    padding: calc(theme.$main-gap / 2) 0;
+    border-radius: theme.$main-radius;
   }
 
   &__input {

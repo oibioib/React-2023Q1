@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import { ErrorMessage } from '@components';
+import formElements from '@scss/components/form-elements.module.scss';
 
 import styles from './InputRadio.module.scss';
 
@@ -23,14 +24,14 @@ class InputRadio extends Component<InputRadioProps> {
 
     const renderOptions = options.map(({ title, forwardedRef, id }) => {
       return (
-        <div key={id} className={styles.radio__block}>
+        <div key={id} className={styles['input-radio__block']}>
           <input
             type="radio"
             name={groupName}
             id={id}
             ref={forwardedRef}
             data-value={title}
-            className={styles.radio__input}
+            className={styles['input-radio__input']}
           />
           <label htmlFor={id}>{title}</label>
         </div>
@@ -38,8 +39,16 @@ class InputRadio extends Component<InputRadioProps> {
     });
 
     return (
-      <div className={styles.radio} data-testid="form-element">
-        <div className={styles.radio__option}>{renderOptions}</div>
+      <div className={styles['input-radio']} data-testid="form-element">
+        <div
+          // className={styles['input-radio__option']}
+          className={
+            (isValid && styles['input-radio__option']) ||
+            [styles['input-radio__option'], formElements.input_warning].join(' ')
+          }
+        >
+          {renderOptions}
+        </div>
         {!isValid && <ErrorMessage message={errorMessage} />}
       </div>
     );

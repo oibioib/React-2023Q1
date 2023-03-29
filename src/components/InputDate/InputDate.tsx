@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import { ErrorMessage } from '@components';
-import elements from '@scss/layouts/elements.module.scss';
+import formElements from '@scss/components/form-elements.module.scss';
 
 interface InputDateProps {
   forwardedRef: React.RefObject<HTMLInputElement>;
@@ -14,7 +14,14 @@ class InputDate extends Component<InputDateProps> {
     const { forwardedRef, errorMessage, isValid } = this.props;
     return (
       <div data-testid="form-element">
-        <input ref={forwardedRef} type="date" className={elements.input} />
+        <input
+          ref={forwardedRef}
+          type="date"
+          className={
+            (isValid && formElements.input) ||
+            [formElements.input, formElements.input_warning].join(' ')
+          }
+        />
         {!isValid && <ErrorMessage message={errorMessage} />}
       </div>
     );

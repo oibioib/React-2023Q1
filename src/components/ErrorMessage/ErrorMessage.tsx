@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import elements from '@scss/layouts/elements.module.scss';
+import base from '@scss/components/base.module.scss';
 
 import styles from './ErrorMessage.module.scss';
 
@@ -11,7 +11,7 @@ class ErrorMessage extends Component<ErrorMessageProps> {
   render() {
     return (
       <div
-        className={[elements.center, elements.warning, styles.error].join(' ')}
+        className={[base.center, base.warning, styles.error].join(' ')}
         data-testid="error-message"
       >
         {this.props.message}

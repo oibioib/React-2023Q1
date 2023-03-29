@@ -4,7 +4,7 @@ import { Menu } from '@components';
 import { MENU_LINKS } from '@constants';
 import { getPageTitle } from '@helpers';
 import { WithLocationProps, withLocation } from '@hoc';
-import layout from '@scss/layouts/layout.module.scss';
+import base from '@scss/components/base.module.scss';
 
 import styles from './Header.module.scss';
 
@@ -18,7 +18,7 @@ class Header extends Component<WithLocationProps, Record<string, never>> {
 
     return (
       <div className={styles.header}>
-        <div className={layout.wrapper}>
+        <div className={base.wrapper}>
           <div className={styles.header__container}>
             <h1 className={styles.header__title}>{pageTitle}</h1>
             <Menu links={MENU_LINKS} />

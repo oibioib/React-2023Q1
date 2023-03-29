@@ -40,7 +40,7 @@ export const STORAGE_KEYS = {
 export const TEXT = {
   PLACEHOLDERS: {
     SEARCH: 'Search something...',
-    FORM_TITLE: 'Enter the title',
+    FORM_TITLE: 'Enter a title',
   },
   MESSAGES: {
     NOT_FOUND: 'Page not found!',
@@ -63,7 +63,7 @@ export const ALERT = {
 };
 
 export const FORM_ERROR_MESSAGE = {
-  TITLE: 'Please enter a name',
+  TITLE: 'Please enter a title',
   BRAND: 'Please select a brand from the list',
   DATE: 'Please select a date greater than now',
   CONDITION: 'Please select product condition',

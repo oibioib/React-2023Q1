@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import { ErrorMessage } from '@components';
-import elements from '@scss/layouts/elements.module.scss';
+import formElements from '@scss/components/form-elements.module.scss';
 
 interface InputTextProps {
   forwardedRef: React.RefObject<HTMLInputElement>;
@@ -18,7 +18,10 @@ class InputText extends Component<InputTextProps> {
         <input
           ref={forwardedRef}
           type="text"
-          className={elements.input}
+          className={
+            (isValid && formElements.input) ||
+            [formElements.input, formElements.input_warning].join(' ')
+          }
           placeholder={placeholder}
         />
         {!isValid && <ErrorMessage message={errorMessage} />}

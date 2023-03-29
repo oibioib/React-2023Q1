@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import { ErrorMessage } from '@components';
-import elements from '@scss/layouts/elements.module.scss';
+import formElements from '@scss/components/form-elements.module.scss';
 
 interface SelectProps {
   forwardedRef: React.RefObject<HTMLSelectElement>;
@@ -15,7 +15,13 @@ class Select extends Component<SelectProps> {
     const { forwardedRef, errorMessage, isValid, options } = this.props;
     return (
       <div data-testid="form-element">
-        <select ref={forwardedRef} className={elements.input}>
+        <select
+          ref={forwardedRef}
+          className={
+            (isValid && formElements.input) ||
+            [formElements.input, formElements.input_warning].join(' ')
+          }
+        >
           <option key="default" value="">
             Chose a brand
           </option>

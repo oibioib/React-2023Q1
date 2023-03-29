@@ -1,0 +1,16 @@
+@use '../abstracts/index' as theme;
+
+.wrapper {
+  max-width: theme.$max-content-width;
+  margin: 0 auto;
+  padding: 0 theme.$main-gap;
+}
+
+.center {
+  text-align: center;
+}
+
+.warning {
+  color: theme.$color-warning;
+  font-size: 1.2rem;
+}
