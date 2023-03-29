@@ -1,7 +1,0 @@
-@use '@scss/abstracts' as theme;
-
-.wrapper {
-  max-width: theme.$max-content-width;
-  margin: 0 auto;
-  padding: 0 theme.$main-gap;
-}

@@ -1,0 +1,26 @@
+@use '../abstracts/index' as theme;
+
+.input {
+  height: calc(theme.$main-gap * 2);
+  width: 100%;
+  padding: 0 calc(theme.$main-gap / 2);
+  border: 0;
+  outline: 0;
+  border-radius: theme.$main-radius;
+  box-shadow: theme.$shadow-color-neutral;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    box-shadow: theme.$shadow-color-secondary;
+  }
+
+  &_warning {
+    box-shadow: theme.$shadow-color-warning;
+
+    &:hover,
+    &:focus {
+      box-shadow: theme.$shadow-color-warning;
+    }
+  }
+}

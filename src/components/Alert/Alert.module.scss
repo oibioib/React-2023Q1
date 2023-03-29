@@ -1,0 +1,9 @@
+@use '@scss/abstracts' as theme;
+
+.alert {
+  margin: theme.$main-gap 0;
+  padding: calc(theme.$main-gap / 2);
+  border-radius: theme.$main-radius;
+  text-align: center;
+  color: theme.$color-bg-light;
+}

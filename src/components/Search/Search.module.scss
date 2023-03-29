@@ -4,22 +4,18 @@
   margin: theme.$main-gap 0;
 
   &__input {
-    height: 40px;
+    height: calc(theme.$main-gap * 2);
     width: 100%;
-    padding: 0 10px;
+    padding: 0 calc(theme.$main-gap / 2);
     border: 0;
     outline: 0;
     border-radius: theme.$main-radius;
-    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.02), inset 0px 2px 3px rgba(0, 0, 0, 0.03),
-      0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 0px 0px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: theme.$shadow-color-neutral;
     transition: all 0.15s ease-in;
 
     &:hover,
     &:focus {
-      box-shadow: inset 0px 0px 3px rgba(theme.$color-secondary, 0.08),
-        inset 0px 2px 3px rgba(theme.$color-secondary, 0.16),
-        0px 0px 0px 1px rgba(theme.$color-secondary, 0.2),
-        0px 0px 0px 4px rgba(theme.$color-secondary, 0.2);
+      box-shadow: theme.$shadow-color-secondary;
     }
   }
 }

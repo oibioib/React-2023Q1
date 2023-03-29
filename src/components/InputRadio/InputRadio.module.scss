@@ -1,0 +1,31 @@
+@use '@scss/abstracts' as theme;
+
+.input-radio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__block {
+    display: flex;
+    align-items: center;
+
+    & > *:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: theme.$main-gap;
+    width: 100%;
+    padding: calc(theme.$main-gap / 2) 0;
+    border-radius: theme.$main-radius;
+  }
+
+  &__input {
+    margin-right: calc(theme.$main-gap / 4);
+  }
+}

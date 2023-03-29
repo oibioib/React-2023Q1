@@ -1,0 +1,50 @@
+@use '@scss/abstracts' as theme;
+
+.input-file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__message {
+    text-align: center;
+    margin-top: calc(theme.$main-gap / 5);
+    font-size: 1.2rem;
+  }
+
+  &__image {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: theme.$main-radius;
+  }
+
+  &__hidden {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    & + label {
+      background-color: theme.$color-bg-light;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: theme.$color-primary;
+        cursor: pointer;
+        box-shadow: theme.$shadow-color-primary;
+      }
+    }
+
+    &:focus {
+      & + label {
+        background-color: theme.$color-primary-dark;
+        cursor: pointer;
+        box-shadow: theme.$shadow-color-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@use '../abstracts/index' as theme;
+
+.button {
+  height: calc(theme.$main-gap * 2);
+  padding: 0 calc(theme.$main-gap / 2);
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  border-radius: theme.$main-radius;
+  background-color: theme.$color-secondary;
+  color: theme.$color-bg-light;
+  transition: all 0.15s ease-in;
+
+  &:hover,
+  &:focus {
+    background-color: theme.$color-secondary-light;
+    box-shadow: theme.$shadow-color-secondary;
+  }
+}

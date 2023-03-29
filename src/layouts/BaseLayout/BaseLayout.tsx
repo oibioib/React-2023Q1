@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Header } from '@layouts';
-import layout from '@scss/layouts/layout.module.scss';
+import base from '@scss/components/base.module.scss';
 
 import styles from './BaseLayout.module.scss';
 
@@ -11,7 +11,7 @@ class BaseLayout extends Component {
     return (
       <div className={styles.container}>
         <Header />
-        <div className={layout.wrapper}>
+        <div className={base.wrapper}>
           <Outlet />
         </div>
       </div>
