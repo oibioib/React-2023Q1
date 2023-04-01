@@ -16,5 +16,9 @@
     padding: 0;
     font-size: 2rem;
     text-transform: uppercase;
+    background-color: theme.$color-primary-dark;
+    padding: calc(theme.$main-gap / 4) calc(theme.$main-gap / 2);
+    border-radius: theme.$main-radius;
+    color: rgba(theme.$color-text, 0.9);
   }
 }
