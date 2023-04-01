@@ -2,13 +2,13 @@ import { Component } from 'react';
 
 import { AddCardForm, Alert, Cards } from '@components';
 import { ALERT } from '@constants';
-import { CardItem } from 'components/types';
+import { Card } from 'components/types';
 
 import styles from './FormPage.module.scss';
 
 interface FormPageState {
   isAllert: boolean;
-  cards: CardItem[];
+  cards: Card[];
 }
 
 class FormPage extends Component<Record<string, never>, FormPageState> {
@@ -21,7 +21,7 @@ class FormPage extends Component<Record<string, never>, FormPageState> {
     };
   }
 
-  onSubmit = (card: CardItem) => {
+  onSubmit = (card: Card) => {
     this.setState((state) => ({ cards: [...state.cards, card], isAllert: true }));
     setTimeout(() => {
       this.setState({ isAllert: false });

@@ -1,162 +1,114 @@
-import React, { createRef } from 'react';
+import { useEffect } from 'react';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { InputCheckbox, InputDate, InputFile, InputRadio, InputText, Select } from '@components';
-import { BRANDS, CONDITION, DELIVERY, FORM_ERROR_MESSAGE, IMAGE_TYPES, TEXT } from '@constants';
+import { ADD_CARD_FORM, BRANDS, CONDITION, DELIVERY, IMAGE_TYPES } from '@constants';
 import { getId, validateForm } from '@helpers';
 import buttons from '@scss/components/buttons.module.scss';
-import { CardItem } from 'components/types';
+import { Card } from 'components/types';
 
 import styles from './AddCardForm.module.scss';
 
 interface AddCardFormProps {
-  onSubmit: (card: CardItem) => void;
+  onSubmit: (card: Card) => void;
 }
 
-interface AddCardFormState {
-  isTitleValid: boolean;
-  isBrandValid: boolean;
-  isDateValid: boolean;
-  isConditionValid: boolean;
-  isImageValid: boolean;
+interface AddCardFormData {
+  card_title: string;
+  card_brand: string;
+  card_date: string;
+  card_condition: string;
+  card_delivery: boolean;
+  card_image: FileList;
 }
 
-interface AddCardFormRefs {
-  form: React.RefObject<HTMLFormElement>;
-  title: React.RefObject<HTMLInputElement>;
-  brand: React.RefObject<HTMLSelectElement>;
-  date: React.RefObject<HTMLInputElement>;
-  delivery: React.RefObject<HTMLInputElement>;
-  conditionNew: React.RefObject<HTMLInputElement>;
-  conditionUsed: React.RefObject<HTMLInputElement>;
-  image: React.RefObject<HTMLInputElement>;
-}
+const AddCardForm = ({ onSubmit }: AddCardFormProps) => {
+  const methods = useForm<AddCardFormData>({
+    reValidateMode: 'onSubmit',
+  });
 
-class AddCardForm extends React.Component<AddCardFormProps, AddCardFormState> {
-  formRefs: AddCardFormRefs;
+  const {
+    handleSubmit,
+    reset: resetForm,
+    formState: { isSubmitSuccessful },
+    setError,
+  } = methods;
 
-  constructor(props: AddCardFormProps) {
-    super(props);
-
-    this.state = {
-      isTitleValid: true,
-      isBrandValid: true,
-      isDateValid: true,
-      isConditionValid: true,
-      isImageValid: true,
-    };
-
-    this.formRefs = {
-      form: createRef(),
-      title: createRef(),
-      brand: createRef(),
-      date: createRef(),
-      delivery: createRef(),
-      conditionNew: createRef(),
-      conditionUsed: createRef(),
-      image: createRef(),
-    };
-  }
-
-  validateCard = () => {
-    const { title, brand, date, conditionNew, conditionUsed, image } = this.formRefs;
-
-    const cardFields: AddCardFormState = {
-      isTitleValid: validateForm.title(title.current?.value ?? ''),
-      isBrandValid: validateForm.brand(brand.current?.value ?? '', BRANDS),
-      isDateValid: validateForm.date(date.current?.value ?? ''),
-      isConditionValid: conditionNew.current!.checked || conditionUsed.current!.checked,
-      isImageValid: validateForm.image(
-        image.current?.files?.length ? image.current?.files[0].type : '',
-        IMAGE_TYPES
-      ),
-    };
-
-    this.setState(cardFields);
-    return Object.values(cardFields).every((field) => field === true);
-  };
-
-  getValidCard = () => {
-    const { title, brand, date, conditionNew, delivery, image } = this.formRefs;
-    const condition = conditionNew.current?.checked ? CONDITION.NEW : CONDITION.USED;
-    const [cardImage] = image.current!.files!;
-    const cardImageUrl = URL.createObjectURL(cardImage);
-
-    return {
-      id: getId(),
-      title: title.current!.value,
-      brand: brand.current!.value,
-      date: date.current!.value,
-      delivery: delivery.current!.checked,
-      condition,
-      image: cardImageUrl,
-    };
-  };
-
-  onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (this.validateCard()) {
-      this.props.onSubmit(this.getValidCard());
-      this.formRefs.form.current?.reset();
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      resetForm();
     }
+  }, [resetForm, isSubmitSuccessful]);
+
+  const onSubmitHandler: SubmitHandler<AddCardFormData> = ({
+    card_title,
+    card_brand,
+    card_date,
+    card_delivery,
+    card_condition,
+    card_image,
+  }) => {
+    const [file] = card_image;
+
+    if (!validateForm.image(file.type, IMAGE_TYPES)) {
+      setError('card_image', {});
+      return;
+    }
+
+    onSubmit({
+      id: getId(),
+      title: card_title,
+      brand: card_brand,
+      date: card_date,
+      delivery: card_delivery,
+      condition: card_condition,
+      image: URL.createObjectURL(file),
+    });
   };
 
-  render() {
-    const { form, title, brand, date, delivery, conditionNew, conditionUsed, image } =
-      this.formRefs;
-    const { isTitleValid, isBrandValid, isDateValid, isConditionValid, isImageValid } = this.state;
-
-    return (
-      <>
-        <form onSubmit={this.onSubmitHandler} ref={form} className={styles.form}>
-          <InputText
-            forwardedRef={title}
-            errorMessage={FORM_ERROR_MESSAGE.TITLE}
-            isValid={isTitleValid}
-            placeholder={TEXT.PLACEHOLDERS.FORM_TITLE}
-          />
-          <Select
-            forwardedRef={brand}
-            errorMessage={FORM_ERROR_MESSAGE.BRAND}
-            isValid={isBrandValid}
-            options={BRANDS}
-          />
-          <InputDate
-            forwardedRef={date}
-            errorMessage={FORM_ERROR_MESSAGE.DATE}
-            isValid={isDateValid}
-          />
-          <InputCheckbox forwardedRef={delivery} labelText={DELIVERY.IS_AVAILABLE} />
-          <InputRadio
-            groupName="condition"
-            errorMessage={FORM_ERROR_MESSAGE.CONDITION}
-            isValid={isConditionValid}
-            options={[
-              {
-                id: CONDITION.NEW,
-                title: CONDITION.NEW,
-                forwardedRef: conditionNew,
-              },
-              {
-                id: CONDITION.USED,
-                title: CONDITION.USED,
-                forwardedRef: conditionUsed,
-              },
-            ]}
-          />
-          <InputFile
-            forwardedRef={image}
-            errorMessage={FORM_ERROR_MESSAGE.FILE}
-            isValid={isImageValid}
-          />
-
-          <button type="submit" className={buttons.button} data-testid="form-element">
-            Submit
-          </button>
-        </form>
-      </>
-    );
-  }
-}
+  return (
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmitHandler)} className={styles.form}>
+        <InputText
+          inputName={ADD_CARD_FORM.ELEMENT_NAME.TITLE}
+          placeholder={ADD_CARD_FORM.PLACEHOLDER.TITLE}
+          errorMessage={ADD_CARD_FORM.VALIDATION_ERROR_MESSAGE.TITLE}
+          testId={ADD_CARD_FORM.ELEMENTS_TEST_ID}
+        />
+        <Select
+          selectName={ADD_CARD_FORM.ELEMENT_NAME.BRAND}
+          options={BRANDS}
+          placeholder={ADD_CARD_FORM.PLACEHOLDER.BRAND}
+          errorMessage={ADD_CARD_FORM.VALIDATION_ERROR_MESSAGE.BRAND}
+          testId={ADD_CARD_FORM.ELEMENTS_TEST_ID}
+        />
+        <InputDate
+          inputName={ADD_CARD_FORM.ELEMENT_NAME.DATE}
+          errorMessage={ADD_CARD_FORM.VALIDATION_ERROR_MESSAGE.DATE}
+          testId={ADD_CARD_FORM.ELEMENTS_TEST_ID}
+        />
+        <InputCheckbox
+          inputName={ADD_CARD_FORM.ELEMENT_NAME.DELIVERY}
+          labelText={DELIVERY.IS_AVAILABLE}
+          testId={ADD_CARD_FORM.ELEMENTS_TEST_ID}
+        />
+        <InputRadio
+          groupName={ADD_CARD_FORM.ELEMENT_NAME.CONDITION}
+          options={[CONDITION.NEW, CONDITION.USED]}
+          errorMessage={ADD_CARD_FORM.VALIDATION_ERROR_MESSAGE.CONDITION}
+          testId={ADD_CARD_FORM.ELEMENTS_TEST_ID}
+        />
+        <InputFile
+          inputName={ADD_CARD_FORM.ELEMENT_NAME.IMAGE}
+          errorMessage={ADD_CARD_FORM.VALIDATION_ERROR_MESSAGE.FILE}
+          testId={ADD_CARD_FORM.ELEMENTS_TEST_ID}
+        />
+        <button type="submit" className={buttons.button} data-testid="form-element">
+          Submit
+        </button>
+      </form>
+    </FormProvider>
+  );
+};
 
 export default AddCardForm;

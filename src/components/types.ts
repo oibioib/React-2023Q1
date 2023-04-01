@@ -1,4 +1,4 @@
-import type { CardItem } from './Card/Card';
-import type { MenuItem } from './Menu/Menu';
+import type { Card } from './Card/Card';
+import type { MenuLink } from './Menu/Menu';
 
-export { MenuItem, CardItem };
+export { MenuLink, Card };
