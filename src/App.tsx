@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ROUTES } from '@constants';
@@ -30,11 +29,9 @@ export const routesConfig = [
   },
 ];
 
-class App extends Component {
-  render() {
-    const router = createBrowserRouter(routesConfig);
-    return <RouterProvider router={router} />;
-  }
-}
+const App = () => {
+  const router = createBrowserRouter(routesConfig);
+  return <RouterProvider router={router} />;
+};
 
 export default App;
