@@ -1,40 +1,36 @@
-import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './Menu.module.scss';
 
-export interface MenuItem {
+export interface MenuLink {
   id: number;
   route: string;
   title: string;
   anchor: string;
 }
 
-export interface MenuProps {
-  links: MenuItem[];
+interface MenuProps {
+  links: MenuLink[];
 }
-class Menu extends Component<MenuProps, Record<string, never>> {
-  render() {
-    const { links } = this.props;
 
-    return (
-      <nav className={styles.nav}>
-        {links.map((link) => {
-          return (
-            <NavLink
-              to={link.route}
-              key={link.id}
-              className={({ isActive }) =>
-                isActive ? `${styles.nav__link} ${styles.nav__link_active}` : styles.nav__link
-              }
-            >
-              {link.anchor}
-            </NavLink>
-          );
-        })}
-      </nav>
-    );
-  }
-}
+const Menu = ({ links }: MenuProps) => {
+  return (
+    <nav className={styles.nav}>
+      {links.map(({ id, route, anchor }) => {
+        return (
+          <NavLink
+            to={route}
+            key={id}
+            className={({ isActive }) =>
+              isActive ? `${styles.nav__link} ${styles.nav__link_active}` : styles.nav__link
+            }
+          >
+            {anchor}
+          </NavLink>
+        );
+      })}
+    </nav>
+  );
+};
 
 export default Menu;
