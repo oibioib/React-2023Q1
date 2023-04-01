@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
-
 import base from '@scss/components/base.module.scss';
 
 import styles from './ErrorMessage.module.scss';
 
-interface ErrorMessageProps {
+interface ErrorMessage {
   message: string;
 }
-class ErrorMessage extends Component<ErrorMessageProps> {
-  render() {
-    return (
-      <div
-        className={[base.center, base.warning, styles.error].join(' ')}
-        data-testid="error-message"
-      >
-        {this.props.message}
-      </div>
-    );
-  }
-}
+
+const ErrorMessage = ({ message }: ErrorMessage) => {
+  return (
+    <div
+      className={[base.center, base.warning, styles.error].join(' ')}
+      data-testid="error-message"
+    >
+      {message}
+    </div>
+  );
+};
 
 export default ErrorMessage;
