@@ -22,7 +22,8 @@
       "@constants": ["constants/index"],
       "@hoc": ["hoc/index"],
       "@helpers": ["helpers/index"],
-      "@scss": ["scss"]
+      "@scss": ["scss"],
+      "@context": ["context"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],
