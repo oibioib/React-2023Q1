@@ -1,21 +1,16 @@
-import React from 'react';
-
 import styles from './Alert.module.scss';
 
-interface AlertProps {
+interface Alert {
   message: string;
   backgroundColor: string;
 }
 
-class Alert extends React.Component<AlertProps, Record<string, never>> {
-  render() {
-    const { message, backgroundColor } = this.props;
-    return (
-      <div className={styles.alert} style={{ backgroundColor }} data-testid="alert">
-        <span>{message}</span>
-      </div>
-    );
-  }
-}
+const Alert = ({ message, backgroundColor }: Alert) => {
+  return (
+    <div className={styles.alert} style={{ backgroundColor }} data-testid="alert">
+      <span>{message}</span>
+    </div>
+  );
+};
 
 export default Alert;
