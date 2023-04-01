@@ -14,7 +14,7 @@ describe('Card', () => {
     delivery: true,
   };
   it('Render single card', async () => {
-    render(<Card card={card} />);
+    render(<Card {...card} />);
     expect(screen.getByText('Test title')).toBeInTheDocument();
     expect(screen.getByText('Test brand')).toBeInTheDocument();
     expect(screen.queryByText('Test description')).not.toBeInTheDocument();
