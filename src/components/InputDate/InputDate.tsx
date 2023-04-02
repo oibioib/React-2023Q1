@@ -1,6 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { ErrorMessage } from '@components';
+import { validateForm } from '@helpers';
 import formElements from '@scss/components/form-elements.module.scss';
 
 interface InputDateProps {
@@ -18,7 +19,13 @@ const InputDate = ({ inputName, errorMessage, testId }: InputDateProps) => {
   return (
     <div data-testid={testId ?? ''}>
       <input
-        {...register(inputName, { required: true })}
+        data-testid="date"
+        {...register(inputName, {
+          required: true,
+          validate: {
+            moreThen: (date) => validateForm.date(date),
+          },
+        })}
         type="date"
         className={
           (!errors[inputName] && formElements.input) ||

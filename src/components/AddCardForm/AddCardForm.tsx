@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { InputCheckbox, InputDate, InputFile, InputRadio, InputText, Select } from '@components';
-import { ADD_CARD_FORM, BRANDS, CONDITION, DELIVERY, IMAGE_TYPES } from '@constants';
-import { getId, validateForm } from '@helpers';
+import { ADD_CARD_FORM, BRANDS, CONDITION, DELIVERY } from '@constants';
+import { getId } from '@helpers';
 import buttons from '@scss/components/buttons.module.scss';
 import { Card } from 'components/types';
 
@@ -31,7 +31,6 @@ const AddCardForm = ({ onSubmit }: AddCardFormProps) => {
     handleSubmit,
     reset: resetForm,
     formState: { isSubmitSuccessful },
-    setError,
   } = methods;
 
   useEffect(() => {
@@ -50,11 +49,6 @@ const AddCardForm = ({ onSubmit }: AddCardFormProps) => {
   }) => {
     const [file] = card_image;
 
-    if (!validateForm.image(file.type, IMAGE_TYPES)) {
-      setError('card_image', {});
-      return;
-    }
-
     onSubmit({
       id: getId(),
       title: card_title,
@@ -68,7 +62,11 @@ const AddCardForm = ({ onSubmit }: AddCardFormProps) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmitHandler)} className={styles.form}>
+      <form
+        onSubmit={handleSubmit(onSubmitHandler)}
+        className={styles.form}
+        data-testid="add-card-form"
+      >
         <InputText
           inputName={ADD_CARD_FORM.ELEMENT_NAME.TITLE}
           placeholder={ADD_CARD_FORM.PLACEHOLDER.TITLE}

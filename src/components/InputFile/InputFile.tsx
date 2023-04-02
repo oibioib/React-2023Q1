@@ -44,8 +44,12 @@ const InputFile = ({ errorMessage, inputName, testId }: InputFileProps) => {
   return (
     <div data-testid={testId ?? ''} className={styles['input-file']}>
       <input
+        data-testid="file"
         {...register(inputName, {
           required: true,
+          validate: {
+            validateType: ([file]) => validateForm.image(file.type, IMAGE_TYPES),
+          },
           onChange: onFileSelect,
         })}
         type="file"
