@@ -9,6 +9,8 @@ import InputFile from './InputFile/InputFile';
 import InputRadio from './InputRadio/InputRadio';
 import InputText from './InputText/InputText';
 import Menu from './Menu/Menu';
+import MobileMenu from './MobileMenu/MobileMenu';
+import Modal from './Modal/Modal';
 import Search from './Search/Search';
 import Select from './Select/Select';
 
@@ -26,4 +28,6 @@ export {
   InputRadio,
   InputFile,
   ErrorMessage,
+  Modal,
+  MobileMenu,
 };

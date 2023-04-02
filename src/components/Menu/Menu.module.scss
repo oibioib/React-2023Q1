@@ -2,10 +2,18 @@
 
 .nav {
   display: flex;
-  gap: 15px;
+  gap: theme.$main-gap;
+
+  @media screen and (max-width: theme.$md) {
+    gap: calc(theme.$main-gap * 0.4);
+  }
+
+  @media screen and (max-width: theme.$xs) {
+    display: none;
+  }
 
   &__link {
-    padding: 5px 0;
+    padding: calc(theme.$main-gap / 4) 0;
     color: theme.$color-text;
     text-decoration: none;
     font-size: 1.8rem;

@@ -6,7 +6,9 @@ import { AppContext } from '@context';
 import styles from './Search.module.scss';
 
 const Search = () => {
-  const { searchValue, setSearchValue } = useContext(AppContext);
+  const {
+    search: { searchValue, setSearchValue },
+  } = useContext(AppContext);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);

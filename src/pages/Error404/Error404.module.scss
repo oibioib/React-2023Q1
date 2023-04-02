@@ -21,5 +21,9 @@
     margin: 0;
     font-size: 18rem;
     color: theme.$color-secondary;
+
+    @media screen and (max-width: theme.$xs) {
+      font-size: 10rem;
+    }
   }
 }
