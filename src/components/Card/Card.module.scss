@@ -21,6 +21,10 @@
     max-width: calc(100% - theme.$main-gap * 2);
     max-height: 250px;
     border-radius: theme.$main-radius;
+
+    @media screen and (max-width: theme.$xs) {
+      max-height: 300px;
+    }
   }
 
   &__info {
