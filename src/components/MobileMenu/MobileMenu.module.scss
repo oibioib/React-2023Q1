@@ -1,0 +1,44 @@
+@use '@scss/abstracts' as theme;
+
+.nav {
+  margin: theme.$main-gap 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(theme.$main-gap * 2);
+
+  &__link {
+    padding: calc(theme.$main-gap / 4) 0;
+    color: theme.$color-text;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 500;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(transparent, transparent);
+    background-position: 0 100%;
+    background-size: 100% 10%;
+
+    &:hover {
+      background-image: linear-gradient(
+        rgba(theme.$color-secondary, 1),
+        rgba(theme.$color-secondary, 1)
+      );
+    }
+
+    &_active {
+      cursor: default;
+      background-image: linear-gradient(
+        rgba(theme.$color-primary-dark, 1),
+        rgba(theme.$color-primary-dark, 1)
+      );
+
+      &:hover {
+        background-image: linear-gradient(
+          rgba(theme.$color-primary-dark, 1),
+          rgba(theme.$color-primary-dark, 1)
+        );
+      }
+    }
+  }
+}
