@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AppContext } from '@context';
@@ -17,14 +17,6 @@ const Modal = () => {
   const onClickModalContent = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
   };
-
-  useEffect(() => {
-    if (modalContent) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [modalContent]);
 
   const modalStyles = modalContent ? [styles.modal, styles.modal_active].join(' ') : styles.modal;
   const modalContentStyles = modalContent
