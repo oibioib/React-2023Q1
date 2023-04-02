@@ -30,6 +30,14 @@ describe('Routes', () => {
     render(<RouterProvider router={router} />);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('404');
   });
+
+  it('Render Form page', async () => {
+    const router = createMemoryRouter(routesConfig, {
+      initialEntries: ['/form'],
+    });
+    render(<RouterProvider router={router} />);
+    expect(screen.getByTestId('add-card-form')).toBeInTheDocument();
+  });
 });
 
 describe('App', () => {

@@ -30,6 +30,7 @@ const MobileMenu = ({ links }: MenuProps) => {
       {links.map(({ id, route, anchor }) => {
         return (
           <NavLink
+            data-testid="menu-link"
             to={route}
             key={id}
             className={({ isActive }) =>

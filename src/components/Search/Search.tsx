@@ -28,7 +28,9 @@ const Search = () => {
 
   return (
     <div className={styles.search}>
-      {searchValue && <span className={styles.search__clear} onClick={onClear} />}
+      {searchValue && (
+        <span className={styles.search__clear} onClick={onClear} data-testid="search-clear" />
+      )}
       <input
         data-testid="search"
         value={searchValue}

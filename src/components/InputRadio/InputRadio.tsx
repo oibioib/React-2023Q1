@@ -25,6 +25,7 @@ const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProp
     return (
       <div key={option} className={styles['input-radio__block']}>
         <input
+          data-testid={option}
           {...register(groupName, { required: true })}
           type="radio"
           value={optionValue}

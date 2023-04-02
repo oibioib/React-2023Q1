@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-interface AppContext {
+export interface AppContext {
   search: {
     searchValue: string;
     setSearchValue: (searchValue: string) => void;
