@@ -21,4 +21,16 @@
     border-radius: theme.$main-radius;
     color: rgba(theme.$color-text, 0.9);
   }
+
+  &__burger {
+    display: none;
+
+    @media screen and (max-width: theme.$xs) {
+      display: block;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

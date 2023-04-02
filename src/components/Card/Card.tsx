@@ -15,9 +15,7 @@ export interface Card {
 const Card = ({ title, brand, image, date, condition, delivery }: Card) => {
   return (
     <div className={styles.card} data-testid="card">
-      <div>
-        <img className={styles.card__image} src={image} alt={`${brand} ${title}`} />
-      </div>
+      <img className={styles.card__image} src={image} alt={`${brand} ${title}`} />
       <div className={styles.card__info}>
         <div className={styles.card__title}>{title}</div>
         <div className={styles.card__brand}>{brand}</div>
