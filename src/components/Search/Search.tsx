@@ -1,15 +1,12 @@
 import { useContext } from 'react';
 
 import { TEXT } from '@constants';
-import { AppContext } from '@context';
+import { MainPageContext } from '@context';
 
 import styles from './Search.module.scss';
 
 const Search = () => {
-  const {
-    search: { searchValue, setSearchValue },
-  } = useContext(AppContext);
-
+  const { searchValue, setSearchValue } = useContext(MainPageContext);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };

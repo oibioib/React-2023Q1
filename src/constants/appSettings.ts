@@ -33,8 +33,10 @@ export const MENU_LINKS: MenuLink[] = [
   },
 ];
 
+const PREFIX = 'oibioib_';
+
 export const STORAGE_KEYS = {
-  SEARCH_VALUE: 'search_value',
+  SEARCH_VALUE: `${PREFIX}search_value`,
 };
 
 export const TEXT = {

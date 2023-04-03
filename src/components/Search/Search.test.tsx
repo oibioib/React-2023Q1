@@ -1,36 +1,35 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useBeforeUnload } from 'react-router-dom';
 
 import { STORAGE_KEYS, TEXT } from '@constants';
-import { AppContext } from '@context';
+import { MainPageContext } from '@context';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, vi } from 'vitest';
+import { describe, it } from 'vitest';
 
 import Search from './Search';
 
-const AppContextProviderMock = ({ children }: { children: JSX.Element }) => {
-  const [searchValue, setSearchValue] = useState<string>(
-    localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE) ?? ''
-  );
-  const saveSearchValue = useCallback(() => {
-    localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, searchValue);
+const ProviderMock = ({ children }: { children: JSX.Element }) => {
+  const initSearchValue = localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE) ?? '';
+  const [searchValue, setSearchValue] = useState<string>(initSearchValue);
+  const value = useRef<string>(initSearchValue);
+
+  const saveSearchValue = () => {
+    localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, value.current);
+  };
+
+  useEffect(() => {
+    value.current = searchValue;
   }, [searchValue]);
 
-  useEffect(() => saveSearchValue);
+  useEffect(() => saveSearchValue, []);
   useBeforeUnload(saveSearchValue);
 
   const contextValue = {
-    search: {
-      searchValue,
-      setSearchValue,
-    },
-    modal: {
-      modalContent: null,
-      setModalContent: vi.fn(),
-    },
+    searchValue,
+    setSearchValue,
   };
-  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
+  return <MainPageContext.Provider value={contextValue}>{children}</MainPageContext.Provider>;
 };
 
 describe('Search', () => {
@@ -41,9 +40,9 @@ describe('Search', () => {
 
   it('Change search value', async () => {
     render(
-      <AppContextProviderMock>
+      <ProviderMock>
         <Search />
-      </AppContextProviderMock>
+      </ProviderMock>
     );
     const searchInput = screen.getByTestId('search') as HTMLInputElement;
     await userEvent.type(searchInput, 'test search input');
@@ -52,9 +51,9 @@ describe('Search', () => {
 
   it('Clear search value', async () => {
     render(
-      <AppContextProviderMock>
+      <ProviderMock>
         <Search />
-      </AppContextProviderMock>
+      </ProviderMock>
     );
     const searchInput = screen.getByTestId('search') as HTMLInputElement;
     await userEvent.type(searchInput, 'test search input');
@@ -70,9 +69,9 @@ describe('Search', () => {
     localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, testValue1);
 
     const { unmount } = render(
-      <AppContextProviderMock>
+      <ProviderMock>
         <Search />
-      </AppContextProviderMock>
+      </ProviderMock>
     );
 
     const searchInput = screen.getByTestId('search') as HTMLInputElement;
@@ -81,6 +80,7 @@ describe('Search', () => {
     await userEvent.type(searchInput, testValue2);
     unmount();
     const searchValueFromLocalstorage = localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE);
+    expect(searchValueFromLocalstorage).toBe(testValue2);
     expect(searchValueFromLocalstorage).toBe(testValue2);
   });
 });

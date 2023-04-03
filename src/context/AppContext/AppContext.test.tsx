@@ -11,20 +11,18 @@ const testId = {
   changeSearch: 'change-search-value',
 };
 
-const searchValues = {
-  init: 'test search',
-  change: 'another test search',
+const TestElement = ({ message }: { message: string }) => <h1>{message}</h1>;
+
+const modalElementText = {
+  init: 'init',
+  change: 'change',
 };
 
 const AppContextProviderMock = ({ children }: { children: JSX.Element }) => {
-  const [searchValue, setSearchValue] = useState<string>(searchValues.init);
-  const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
+  const initElement = <TestElement message={modalElementText.init} />;
+  const [modalContent, setModalContent] = useState<JSX.Element | null>(initElement);
 
   const contextValue = {
-    search: {
-      searchValue,
-      setSearchValue,
-    },
     modal: {
       modalContent,
       setModalContent,
@@ -35,14 +33,17 @@ const AppContextProviderMock = ({ children }: { children: JSX.Element }) => {
 
 const TestChild = () => {
   const {
-    search: { searchValue, setSearchValue },
+    modal: { modalContent, setModalContent },
   } = useContext(AppContext);
 
   return (
     <>
-      <div data-testid={testId.search}>{searchValue}</div>
-      <button data-testid={testId.changeSearch} onClick={() => setSearchValue(searchValues.change)}>
-        Change search value
+      <div data-testid={testId.search}>{modalContent}</div>
+      <button
+        data-testid={testId.changeSearch}
+        onClick={() => setModalContent(<TestElement message={modalElementText.change} />)}
+      >
+        Change modal content
       </button>
     </>
   );
@@ -55,7 +56,7 @@ describe('AppContext', () => {
         <TestChild />
       </AppContextProviderMock>
     );
-    expect(screen.getByTestId(testId.search)).toHaveTextContent(searchValues.init);
+    expect(screen.getByTestId(testId.search)).toHaveTextContent(modalElementText.init);
   });
 
   it('Change search value', async () => {
@@ -67,6 +68,6 @@ describe('AppContext', () => {
 
     const changeSearchValueButton = screen.getByTestId(testId.changeSearch);
     await userEvent.click(changeSearchValueButton);
-    expect(screen.getByTestId(testId.search)).toHaveTextContent(searchValues.change);
+    expect(screen.getByTestId(testId.search)).toHaveTextContent(modalElementText.change);
   });
 });

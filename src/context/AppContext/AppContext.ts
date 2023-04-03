@@ -1,10 +1,6 @@
 import { createContext } from 'react';
 
 export interface AppContext {
-  search: {
-    searchValue: string;
-    setSearchValue: (searchValue: string) => void;
-  };
   modal: {
     modalContent: JSX.Element | null;
     setModalContent: (modalContent: JSX.Element | null) => void;
@@ -12,10 +8,6 @@ export interface AppContext {
 }
 
 export const AppContext = createContext<AppContext>({
-  search: {
-    searchValue: '',
-    setSearchValue: () => {},
-  },
   modal: {
     modalContent: null,
     setModalContent: () => {},

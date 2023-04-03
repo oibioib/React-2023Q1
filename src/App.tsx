@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
-import { RouterProvider, createBrowserRouter, useBeforeUnload } from 'react-router-dom';
+import { useState } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ROUTES } from '@constants';
-import { STORAGE_KEYS } from '@constants';
 import { AppContext } from '@context';
 import { BaseLayout } from '@layouts';
 import { AboutUs, Error404, FormPage, MainPage } from '@pages';
@@ -33,22 +32,9 @@ export const routesConfig = [
 ];
 
 const App = () => {
-  const initSearchValue = localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE) ?? '';
-  const [searchValue, setSearchValue] = useState<string>(initSearchValue);
   const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
 
-  const saveSearchValue = useCallback(() => {
-    localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, searchValue);
-  }, [searchValue]);
-
-  useEffect(() => saveSearchValue);
-  useBeforeUnload(saveSearchValue);
-
   const contextValue = {
-    search: {
-      searchValue,
-      setSearchValue,
-    },
     modal: {
       modalContent,
       setModalContent,
