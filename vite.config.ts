@@ -35,6 +35,9 @@ export default defineConfig({
       apply: 'serve',
     },
   ],
+  css: {
+    devSourcemap: true,
+  },
   test: {
     globals: true,
     environment: 'jsdom',
