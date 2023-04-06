@@ -1,5 +1,5 @@
 import AddCardForm from './AddCardForm/AddCardForm';
-import Alert from './Alert/Alert';
+import AlertProps from './Alert/Alert';
 import Card from './Card/Card';
 import Cards from './Cards/Cards';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
@@ -9,6 +9,8 @@ import InputFile from './InputFile/InputFile';
 import InputRadio from './InputRadio/InputRadio';
 import InputText from './InputText/InputText';
 import Menu from './Menu/Menu';
+import MobileMenu from './MobileMenu/MobileMenu';
+import Modal from './Modal/Modal';
 import Search from './Search/Search';
 import Select from './Select/Select';
 
@@ -18,7 +20,7 @@ export {
   Search,
   Cards,
   AddCardForm,
-  Alert,
+  AlertProps as Alert,
   InputText,
   Select,
   InputDate,
@@ -26,4 +28,6 @@ export {
   InputRadio,
   InputFile,
   ErrorMessage,
+  Modal,
+  MobileMenu,
 };

@@ -1,47 +1,35 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
 import { AddCardForm, Alert, Cards } from '@components';
 import { ALERT } from '@constants';
-import { CardItem } from 'components/types';
+import { Card } from 'components/types';
 
 import styles from './FormPage.module.scss';
 
-interface FormPageState {
-  isAllert: boolean;
-  cards: CardItem[];
-}
+const FormPage = () => {
+  const [isAllert, setIsAllert] = useState<boolean>(false);
+  const [cards, setCards] = useState<Card[]>([]);
 
-class FormPage extends Component<Record<string, never>, FormPageState> {
-  constructor(props: Record<string, never>) {
-    super(props);
-
-    this.state = {
-      isAllert: false,
-      cards: [],
-    };
-  }
-
-  onSubmit = (card: CardItem) => {
-    this.setState((state) => ({ cards: [...state.cards, card], isAllert: true }));
-    setTimeout(() => {
-      this.setState({ isAllert: false });
-    }, ALERT.DURATION_MS);
+  const onSubmit = (card: Card) => {
+    setCards((cards) => [...cards, card]);
+    setIsAllert(true);
   };
 
-  render() {
-    const { isAllert, cards } = this.state;
-    return (
-      <>
-        {isAllert && (
-          <Alert message={ALERT.MESSAGES.CARD_SUCCESS} backgroundColor={ALERT.COLORS.SUCCESS} />
-        )}
-        <div className={styles.form_wrapper}>
-          <AddCardForm onSubmit={this.onSubmit} />
-        </div>
-        <Cards cards={cards} />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {isAllert && (
+        <Alert
+          type="success"
+          message={ALERT.MESSAGES.CARD_SUCCESS}
+          onAnimationEnd={() => setIsAllert(false)}
+        />
+      )}
+      <div className={styles.form_wrapper}>
+        <AddCardForm onSubmit={onSubmit} />
+      </div>
+      <Cards cards={cards} />
+    </>
+  );
+};
 
 export default FormPage;

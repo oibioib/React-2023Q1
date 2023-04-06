@@ -1,40 +1,43 @@
-import { Component } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { ErrorMessage } from '@components';
 import formElements from '@scss/components/form-elements.module.scss';
 
 interface SelectProps {
-  forwardedRef: React.RefObject<HTMLSelectElement>;
-  errorMessage: string;
-  isValid: boolean;
+  selectName: string;
   options: string[];
+  placeholder: string;
+  errorMessage: string;
+  testId?: string;
 }
 
-class Select extends Component<SelectProps> {
-  render() {
-    const { forwardedRef, errorMessage, isValid, options } = this.props;
-    return (
-      <div data-testid="form-element">
-        <select
-          ref={forwardedRef}
-          className={
-            (isValid && formElements.input) ||
-            [formElements.input, formElements.input_warning].join(' ')
-          }
-        >
-          <option key="default" value="">
-            Chose a brand
+const Select = ({ selectName, options, placeholder, errorMessage, testId }: SelectProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  return (
+    <div data-testid={testId ?? ''}>
+      <select
+        {...register(selectName, { required: true })}
+        className={
+          (!errors[selectName] && formElements.input) ||
+          [formElements.input, formElements.input_warning].join(' ')
+        }
+      >
+        <option key="default" value="">
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
           </option>
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        {!isValid && <ErrorMessage message={errorMessage} />}
-      </div>
-    );
-  }
-}
+        ))}
+      </select>
+      {errors[selectName] && <ErrorMessage message={errorMessage} />}
+    </div>
+  );
+};
 
 export default Select;

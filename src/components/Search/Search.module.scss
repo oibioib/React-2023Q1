@@ -2,6 +2,9 @@
 
 .search {
   margin: theme.$main-gap 0;
+  position: relative;
+  display: flex;
+  align-items: center;
 
   &__input {
     height: calc(theme.$main-gap * 2);
@@ -16,6 +19,24 @@
     &:hover,
     &:focus {
       box-shadow: theme.$shadow-color-secondary;
+    }
+
+    &_close {
+      padding-right: calc(theme.$main-gap * 2);
+    }
+  }
+
+  &__clear {
+    @include theme.close-button(theme.$color-grey, theme.$color-secondary, 2rem, 2rem);
+
+    position: absolute;
+    right: calc(theme.$main-gap / 2);
+
+    &:hover,
+    &:focus {
+      & + input {
+        box-shadow: theme.$shadow-color-secondary;
+      }
     }
   }
 }

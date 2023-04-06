@@ -1,12 +1,15 @@
 @use '@scss/abstracts' as theme;
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: theme.$color-bg-light;
   border-radius: theme.$main-radius;
   text-align: center;
   overflow: hidden;
   transition: 0.3s;
-  cursor: pointer;
+  // cursor: pointer;
   box-shadow: theme.$shadow-bottom;
 
   &:hover {
@@ -14,7 +17,14 @@
   }
 
   &__image {
-    max-width: 100%;
+    margin: theme.$main-gap;
+    max-width: calc(100% - theme.$main-gap * 2);
+    max-height: 250px;
+    border-radius: theme.$main-radius;
+
+    @media screen and (max-width: theme.$xs) {
+      max-height: 300px;
+    }
   }
 
   &__info {

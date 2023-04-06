@@ -1,25 +1,28 @@
-import { Component } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { getId } from '@helpers';
 
 import styles from './InputCheckbox.module.scss';
 
 interface InputCheckboxProps {
-  forwardedRef: React.RefObject<HTMLInputElement>;
+  inputName: string;
   labelText: string;
+  testId?: string;
 }
 
-class InputCheckbox extends Component<InputCheckboxProps> {
-  render() {
-    const { forwardedRef, labelText } = this.props;
-    const id = getId().toString();
-    return (
-      <div className={styles['input-checkbox']} data-testid="form-element">
-        <input type="checkbox" id={id} ref={forwardedRef} />
-        <label htmlFor={id}>{labelText}</label>
-      </div>
-    );
-  }
-}
+const InputCheckbox = ({ inputName, labelText, testId }: InputCheckboxProps) => {
+  const id = getId().toString();
+  const { register } = useFormContext();
+
+  return (
+    <div data-testid={testId ?? ''} className={styles['input-checkbox']}>
+      <input {...register(inputName)} type="checkbox" id={id} />
+      <label htmlFor={id}>
+        <span></span>
+        {labelText}
+      </label>
+    </div>
+  );
+};
 
 export default InputCheckbox;

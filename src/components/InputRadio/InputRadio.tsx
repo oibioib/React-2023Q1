@@ -1,58 +1,52 @@
-import { Component } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { ErrorMessage } from '@components';
+import { toTitleCase } from '@helpers';
 import formElements from '@scss/components/form-elements.module.scss';
 
 import styles from './InputRadio.module.scss';
 
-type RadioOption = {
-  id: string;
-  title: string;
-  forwardedRef: React.RefObject<HTMLInputElement>;
-};
-
 interface InputRadioProps {
   groupName: string;
+  options: string[];
   errorMessage: string;
-  isValid: boolean;
-  options: RadioOption[];
+  testId: string;
 }
 
-class InputRadio extends Component<InputRadioProps> {
-  render() {
-    const { options, groupName, isValid, errorMessage } = this.props;
+const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
-    const renderOptions = options.map(({ title, forwardedRef, id }) => {
-      return (
-        <div key={id} className={styles['input-radio__block']}>
-          <input
-            type="radio"
-            name={groupName}
-            id={id}
-            ref={forwardedRef}
-            data-value={title}
-            className={styles['input-radio__input']}
-          />
-          <label htmlFor={id}>{title}</label>
-        </div>
-      );
-    });
+  const optionsRender = options.map((option) => {
+    const optionValue = toTitleCase(option);
+    const id = option.toLowerCase().replace(' ', '_');
 
     return (
-      <div className={styles['input-radio']} data-testid="form-element">
-        <div
-          // className={styles['input-radio__option']}
-          className={
-            (isValid && styles['input-radio__option']) ||
-            [styles['input-radio__option'], formElements.input_warning].join(' ')
-          }
-        >
-          {renderOptions}
-        </div>
-        {!isValid && <ErrorMessage message={errorMessage} />}
+      <div key={option} className={styles['input-radio__block']}>
+        <input
+          data-testid={option}
+          {...register(groupName, { required: true })}
+          type="radio"
+          value={optionValue}
+          id={id}
+        />
+        <label htmlFor={id}>{optionValue}</label>
       </div>
     );
-  }
-}
+  });
+
+  const inputStyles =
+    (!errors[groupName] && styles['input-radio__option']) ||
+    [styles['input-radio__option'], formElements.input_warning].join(' ');
+
+  return (
+    <div className={styles['input-radio']} data-testid={testId ?? ''}>
+      <div className={inputStyles}>{optionsRender}</div>
+      {errors[groupName] && <ErrorMessage message={errorMessage} />}
+    </div>
+  );
+};
 
 export default InputRadio;

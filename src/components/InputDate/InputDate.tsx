@@ -1,31 +1,43 @@
-import { Component } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { ErrorMessage } from '@components';
+import { validateForm } from '@helpers';
 import formElements from '@scss/components/form-elements.module.scss';
 
 interface InputDateProps {
-  forwardedRef: React.RefObject<HTMLInputElement>;
+  inputName: string;
   errorMessage: string;
-  isValid: boolean;
+  testId?: string;
 }
 
-class InputDate extends Component<InputDateProps> {
-  render() {
-    const { forwardedRef, errorMessage, isValid } = this.props;
-    return (
-      <div data-testid="form-element">
-        <input
-          ref={forwardedRef}
-          type="date"
-          className={
-            (isValid && formElements.input) ||
-            [formElements.input, formElements.input_warning].join(' ')
-          }
-        />
-        {!isValid && <ErrorMessage message={errorMessage} />}
-      </div>
-    );
-  }
-}
+const InputDate = ({ inputName, errorMessage, testId }: InputDateProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  return (
+    <div data-testid={testId ?? ''}>
+      <label htmlFor={inputName} hidden>
+        {inputName}
+      </label>
+      <input
+        id={inputName}
+        {...register(inputName, {
+          required: true,
+          validate: {
+            moreThen: (date) => validateForm.date(date),
+          },
+        })}
+        type="date"
+        className={
+          (!errors[inputName] && formElements.input) ||
+          [formElements.input, formElements.input_warning].join(' ')
+        }
+      />
+      {errors[inputName] && <ErrorMessage message={errorMessage} />}
+    </div>
+  );
+};
 
 export default InputDate;

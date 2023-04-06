@@ -1,0 +1,52 @@
+@use '@scss/abstracts' as theme;
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+
+  &_active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__content {
+    max-width: 500px;
+    min-width: 260px;
+    margin: theme.$main-gap;
+    background-color: white;
+    position: relative;
+    border-radius: theme.$main-radius;
+    padding: theme.$main-gap;
+    transform: scale(0);
+    transition: 0.1s;
+    box-shadow: theme.$shadow-bottom-intensive;
+
+    &_active {
+      transform: scale(1);
+    }
+  }
+
+  &__close {
+    @include theme.close-button(theme.$color-grey, theme.$color-primary, 2rem, 2rem);
+
+    position: absolute;
+    right: calc(theme.$main-gap / 2);
+    top: calc(theme.$main-gap / 2);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

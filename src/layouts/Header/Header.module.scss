@@ -16,5 +16,43 @@
     padding: 0;
     font-size: 2rem;
     text-transform: uppercase;
+    background-color: theme.$color-primary-dark;
+    padding: calc(theme.$main-gap / 4) calc(theme.$main-gap / 2);
+    border-radius: theme.$main-radius;
+    color: rgba(theme.$color-text, 0.9);
+  }
+
+  &__burger {
+    display: none;
+    width: 35px;
+    padding: 8px 6px;
+    background-color: theme.$color-primary-dark;
+    border-radius: 3px;
+    transition: 0.3s;
+
+    @media screen and (max-width: theme.$xs) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &:hover {
+      background-color: theme.$color-secondary;
+      cursor: pointer;
+
+      span {
+        background-color: white;
+      }
+    }
+
+    span {
+      display: block;
+      background-color: rgba(theme.$color-text, 0.9);
+      height: 2px;
+      width: 100%;
+      border-radius: 2px;
+      transition: 0.5s;
+    }
   }
 }

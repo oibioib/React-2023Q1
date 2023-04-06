@@ -1,22 +1,22 @@
-import { Component } from 'react';
+import { RemoveScroll } from 'react-remove-scroll';
 import { Outlet } from 'react-router-dom';
 
+import { Modal } from '@components';
 import { Header } from '@layouts';
 import base from '@scss/components/base.module.scss';
 
-import styles from './BaseLayout.module.scss';
-
-class BaseLayout extends Component {
-  render() {
-    return (
-      <div className={styles.container}>
-        <Header />
-        <div className={base.wrapper}>
-          <Outlet />
-        </div>
+const BaseLayout = () => {
+  return (
+    <div>
+      <Header />
+      <div className={base.wrapper}>
+        <Outlet />
       </div>
-    );
-  }
-}
+      <Modal />
+    </div>
+  );
+};
 
 export default BaseLayout;
+
+<RemoveScroll>Only this content would be scrollable</RemoveScroll>;

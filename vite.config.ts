@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
 import { configDefaults } from 'vitest/config';
 
-const folders = ['pages', 'components', 'layouts', 'constants', 'hoc', 'helpers'];
+const folders = ['pages', 'components', 'layouts', 'constants', 'hoc', 'helpers', 'context'];
 
 const aliases = folders.map((folder) => ({
   find: `@${folder}`,
@@ -35,6 +35,9 @@ export default defineConfig({
       apply: 'serve',
     },
   ],
+  css: {
+    devSourcemap: true,
+  },
   test: {
     globals: true,
     environment: 'jsdom',

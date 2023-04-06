@@ -1,0 +1,43 @@
+@mixin close-button($color-main, $color-hover, $width, $height) {
+  width: $width;
+  height: $height;
+  position: relative;
+  transition: transform 0.7s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: rotate(180deg);
+    &::before,
+    &::after {
+      background: $color-hover;
+    }
+  }
+
+  &:active {
+    &::before,
+    &::after {
+      background: $color-hover;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: calc((100% - 2px) / 2);
+    border-radius: 2px;
+    background: $color-main;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}

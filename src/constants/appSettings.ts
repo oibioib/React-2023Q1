@@ -1,4 +1,4 @@
-import { MenuItem } from 'components/types';
+import { MenuLink } from 'components/types';
 
 export const ROUTES = {
   MAIN: '/',
@@ -6,7 +6,7 @@ export const ROUTES = {
   FORM: 'form',
 };
 
-export const MENU_LINKS: MenuItem[] = [
+export const MENU_LINKS: MenuLink[] = [
   {
     id: 1,
     route: '/',
@@ -33,19 +33,21 @@ export const MENU_LINKS: MenuItem[] = [
   },
 ];
 
+const PREFIX = 'oibioib_';
+
 export const STORAGE_KEYS = {
-  SEARCH_VALUE: 'search_value',
+  SEARCH_VALUE: `${PREFIX}search_value`,
 };
 
 export const TEXT = {
   PLACEHOLDERS: {
     SEARCH: 'Search something...',
-    FORM_TITLE: 'Enter a title',
   },
   MESSAGES: {
     NOT_FOUND: 'Page not found!',
     GO_MAIN: 'Go to main page!',
     NO_FILE: 'No image selected',
+    NO_CARDS_FOUNDED: 'Cards not found. Please, refine your search criteria.',
   },
   BUTTONS: {
     SELECT_IMAGE: 'Select an image',
@@ -53,21 +55,9 @@ export const TEXT = {
 };
 
 export const ALERT = {
-  DURATION_MS: 2500,
   MESSAGES: {
     CARD_SUCCESS: 'Card added successfully!',
   },
-  COLORS: {
-    SUCCESS: '#53b053',
-  },
-};
-
-export const FORM_ERROR_MESSAGE = {
-  TITLE: 'Please enter a title',
-  BRAND: 'Please select a brand from the list',
-  DATE: 'Please select a date greater than now',
-  CONDITION: 'Please select product condition',
-  FILE: 'Please select jpg or png file',
 };
 
 export const BRANDS = ['Samsung', 'Apple', 'Xiaomi', 'Huawei', 'Realme', 'Asus', 'Lenovo', 'LG'];
