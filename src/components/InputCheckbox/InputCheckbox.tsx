@@ -17,7 +17,10 @@ const InputCheckbox = ({ inputName, labelText, testId }: InputCheckboxProps) => 
   return (
     <div data-testid={testId ?? ''} className={styles['input-checkbox']}>
       <input {...register(inputName)} type="checkbox" id={id} />
-      <label htmlFor={id}>{labelText}</label>
+      <label htmlFor={id}>
+        <span></span>
+        {labelText}
+      </label>
     </div>
   );
 };

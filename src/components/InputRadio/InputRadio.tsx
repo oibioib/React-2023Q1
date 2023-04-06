@@ -22,6 +22,7 @@ const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProp
   const optionsRender = options.map((option) => {
     const optionValue = toTitleCase(option);
     const id = option.toLowerCase().replace(' ', '_');
+
     return (
       <div key={option} className={styles['input-radio__block']}>
         <input
@@ -30,23 +31,19 @@ const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProp
           type="radio"
           value={optionValue}
           id={id}
-          className={styles['input-radio__input']}
         />
         <label htmlFor={id}>{optionValue}</label>
       </div>
     );
   });
 
+  const inputStyles =
+    (!errors[groupName] && styles['input-radio__option']) ||
+    [styles['input-radio__option'], formElements.input_warning].join(' ');
+
   return (
     <div className={styles['input-radio']} data-testid={testId ?? ''}>
-      <div
-        className={
-          (!errors[groupName] && styles['input-radio__option']) ||
-          [styles['input-radio__option'], formElements.input_warning].join(' ')
-        }
-      >
-        {optionsRender}
-      </div>
+      <div className={inputStyles}>{optionsRender}</div>
       {errors[groupName] && <ErrorMessage message={errorMessage} />}
     </div>
   );
