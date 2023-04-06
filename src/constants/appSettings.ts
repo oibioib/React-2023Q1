@@ -55,12 +55,8 @@ export const TEXT = {
 };
 
 export const ALERT = {
-  DURATION_MS: 2500,
   MESSAGES: {
     CARD_SUCCESS: 'Card added successfully!',
-  },
-  COLORS: {
-    SUCCESS: '#53b053',
   },
 };
 

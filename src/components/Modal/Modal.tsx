@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { createPortal } from 'react-dom';
+import { RemoveScroll } from 'react-remove-scroll';
 
 import { AppContext } from '@context';
 
@@ -27,7 +28,7 @@ const Modal = () => {
     <div className={modalStyles} onMouseDown={onCloseModal}>
       <div className={modalContentStyles} onMouseDown={onClickModalContent}>
         <span onMouseDown={onCloseModal} className={styles.modal__close} />
-        {modalContent}
+        {modalContent && <RemoveScroll>{modalContent}</RemoveScroll>}
       </div>
     </div>,
     document.body

@@ -2,7 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import InputText from './InputText';
 
@@ -46,10 +46,10 @@ describe('InputText', () => {
         <InputText {...testData} />
       </TestForm>
     );
-    const inputBlock = screen.getByTestId(testData.testId);
-    const textInput = screen.getByRole('textbox') as HTMLInputElement;
+    const textInput = screen.getByRole('textbox');
     await userEvent.type(textInput, '{enter}');
-    expect(inputBlock).toHaveTextContent(testData.errorMessage);
+    const errorBlock = screen.queryByText(testData.errorMessage);
+    expect(errorBlock).toBeInTheDocument();
   });
 
   it('Submit valid text', async () => {
@@ -58,9 +58,9 @@ describe('InputText', () => {
         <InputText {...testData} />
       </TestForm>
     );
-    const inputBlock = screen.getByTestId(testData.testId);
-    const textInput = screen.getByRole('textbox') as HTMLInputElement;
+    const textInput = screen.getByRole('textbox');
     await userEvent.type(textInput, 'test text{enter}');
-    expect(inputBlock).not.toHaveTextContent(testData.errorMessage);
+    const errorBlock = screen.queryByText(testData.errorMessage);
+    expect(errorBlock).not.toBeInTheDocument();
   });
 });

@@ -18,8 +18,11 @@ const InputDate = ({ inputName, errorMessage, testId }: InputDateProps) => {
 
   return (
     <div data-testid={testId ?? ''}>
+      <label htmlFor={inputName} hidden>
+        {inputName}
+      </label>
       <input
-        data-testid="date"
+        id={inputName}
         {...register(inputName, {
           required: true,
           validate: {

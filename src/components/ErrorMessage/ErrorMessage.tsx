@@ -2,11 +2,11 @@ import base from '@scss/components/base.module.scss';
 
 import styles from './ErrorMessage.module.scss';
 
-interface ErrorMessage {
+interface ErrorMessageProps {
   message: string;
 }
 
-const ErrorMessage = ({ message }: ErrorMessage) => {
+const ErrorMessage = ({ message }: ErrorMessageProps) => {
   return (
     <div
       className={[base.center, base.warning, styles.error].join(' ')}

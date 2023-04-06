@@ -13,16 +13,16 @@ const FormPage = () => {
   const onSubmit = (card: Card) => {
     setCards((cards) => [...cards, card]);
     setIsAllert(true);
-
-    setTimeout(() => {
-      setIsAllert(false);
-    }, ALERT.DURATION_MS);
   };
 
   return (
     <>
       {isAllert && (
-        <Alert message={ALERT.MESSAGES.CARD_SUCCESS} backgroundColor={ALERT.COLORS.SUCCESS} />
+        <Alert
+          type="success"
+          message={ALERT.MESSAGES.CARD_SUCCESS}
+          onAnimationEnd={() => setIsAllert(false)}
+        />
       )}
       <div className={styles.form_wrapper}>
         <AddCardForm onSubmit={onSubmit} />

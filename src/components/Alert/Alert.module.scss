@@ -1,9 +1,61 @@
 @use '@scss/abstracts' as theme;
 
+$alert-loading-height: 5px;
+$alert-duration: 3s;
+
 .alert {
   margin: theme.$main-gap 0;
-  padding: calc(theme.$main-gap / 2);
+  padding: calc(theme.$main-gap / 2) calc(theme.$main-gap / 2)
+    calc($alert-loading-height + theme.$main-gap / 2);
   border-radius: theme.$main-radius;
   text-align: center;
   color: theme.$color-bg-light;
+  animation: alert $alert-duration linear;
+  position: relative;
+  overflow: hidden;
+
+  &__loading {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $alert-loading-height;
+    animation: alert-loading $alert-duration linear;
+  }
+
+  &_success {
+    background-color: theme.$color-success;
+
+    div {
+      background-color: theme.$color-success-dark;
+    }
+  }
+
+  &_warning {
+    background-color: theme.$color-warning;
+
+    div {
+      background-color: theme.$color-warning-dark;
+    }
+  }
+}
+
+@keyframes alert {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+}
+
+@keyframes alert-loading {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
 }

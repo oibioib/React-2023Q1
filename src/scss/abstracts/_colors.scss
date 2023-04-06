@@ -4,6 +4,9 @@ $color-secondary: #2ab7ca;
 $color-secondary-light: lighten($color-secondary, 10%);
 $color-warning: #fe4a49;
 $color-warning-light: lighten($color-warning, 30%);
+$color-warning-dark: darken($color-warning, 20%);
+$color-success: #53b053;
+$color-success-dark: darken($color-success, 20%);
 $color-grey: #b9b9b9;
 
 $color-text: #181818;

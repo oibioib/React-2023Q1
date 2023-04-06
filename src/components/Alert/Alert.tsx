@@ -1,14 +1,20 @@
 import styles from './Alert.module.scss';
 
-interface Alert {
+interface AlertProps {
   message: string;
-  backgroundColor: string;
+  type: 'success' | 'warning';
+  onAnimationEnd: () => void;
 }
 
-const Alert = ({ message, backgroundColor }: Alert) => {
+const Alert = ({ message, type, onAnimationEnd }: AlertProps) => {
   return (
-    <div className={styles.alert} style={{ backgroundColor }} data-testid="alert">
+    <div
+      onAnimationEnd={onAnimationEnd}
+      className={[styles.alert, styles[`alert_${type}`]].join(' ')}
+      data-testid="alert-block"
+    >
       <span>{message}</span>
+      <div className={styles.alert__loading}></div>
     </div>
   );
 };

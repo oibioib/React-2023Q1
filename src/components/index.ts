@@ -1,5 +1,5 @@
 import AddCardForm from './AddCardForm/AddCardForm';
-import Alert from './Alert/Alert';
+import AlertProps from './Alert/Alert';
 import Card from './Card/Card';
 import Cards from './Cards/Cards';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
@@ -20,7 +20,7 @@ export {
   Search,
   Cards,
   AddCardForm,
-  Alert,
+  AlertProps as Alert,
   InputText,
   Select,
   InputDate,
