@@ -34,7 +34,13 @@ const MainCard = ({ id, thumb, description, author }: MainCardProps) => {
 
   return (
     <div className={styles['main-card']} onClick={openMainCardModal}>
-      <img className={styles['main-card__image']} src={thumb} alt={info} title={info} />
+      <img
+        className={styles['main-card__image']}
+        src={thumb}
+        alt={info}
+        title={info}
+        aria-label="photo"
+      />
     </div>
   );
 };

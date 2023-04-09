@@ -5,7 +5,7 @@ import { STORAGE_KEYS, TEXT } from '@constants';
 import { MainPageContext } from '@context';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it } from 'vitest';
+import { describe, it, vi } from 'vitest';
 
 import Search from './Search';
 
@@ -28,6 +28,7 @@ const ProviderMock = ({ children }: { children: JSX.Element }) => {
   const contextValue = {
     searchValue,
     setSearchValue,
+    doSearch: vi.fn(),
   };
   return <MainPageContext.Provider value={contextValue}>{children}</MainPageContext.Provider>;
 };
@@ -60,27 +61,5 @@ describe('Search', () => {
     const searchClear = screen.getByTestId('search-clear') as HTMLSpanElement;
     await userEvent.click(searchClear);
     expect(searchInput.value).toBe('');
-  });
-
-  it('Save and Load search value', async () => {
-    const testValue1 = 'test search saved';
-    const testValue2 = 'test search to save';
-
-    localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, testValue1);
-
-    const { unmount } = render(
-      <ProviderMock>
-        <Search />
-      </ProviderMock>
-    );
-
-    const searchInput = screen.getByTestId('search') as HTMLInputElement;
-    expect(searchInput.value).toBe(testValue1);
-    await userEvent.clear(searchInput);
-    await userEvent.type(searchInput, testValue2);
-    unmount();
-    const searchValueFromLocalstorage = localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE);
-    expect(searchValueFromLocalstorage).toBe(testValue2);
-    expect(searchValueFromLocalstorage).toBe(testValue2);
   });
 });

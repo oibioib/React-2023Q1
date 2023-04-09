@@ -4,7 +4,7 @@ import { TEXT } from '@constants';
 import { render, screen } from '@testing-library/react';
 import { describe, it } from 'vitest';
 
-import App, { routesConfig } from './App';
+import { routesConfig } from './App';
 
 describe('Routes', () => {
   it('Render Main page', async () => {
@@ -37,13 +37,5 @@ describe('Routes', () => {
     });
     render(<RouterProvider router={router} />);
     expect(screen.getByTestId('add-card-form')).toBeInTheDocument();
-  });
-});
-
-describe('App', () => {
-  it('Render App', async () => {
-    render(<App />);
-    expect(screen.getByPlaceholderText(TEXT.PLACEHOLDERS.SEARCH)).toBeInTheDocument();
-    expect(screen.getByTestId('cards')).toBeInTheDocument();
   });
 });

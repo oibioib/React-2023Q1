@@ -9,7 +9,7 @@ interface MainCardsProps {
 
 const MainCards = ({ cards }: MainCardsProps) => {
   return (
-    <div className={styles['main-cards']}>
+    <div className={styles['main-cards']} data-testid="main-cards">
       {cards.map((card) => (
         <MainCard key={card.id} {...card} />
       ))}

@@ -1,7 +1,7 @@
 import { API } from '@constants';
 import { MainCardProps } from 'components/types';
 
-interface UnsplashPhoto {
+export interface UnsplashPhoto {
   id: string;
   created_at: string;
   color: string;
@@ -19,7 +19,7 @@ interface UnsplashPhoto {
   };
 }
 
-interface UnsplashResult {
+export interface UnsplashResult {
   results: UnsplashPhoto[];
   total: number;
   total_pages: number;
