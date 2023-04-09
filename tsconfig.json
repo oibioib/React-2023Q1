@@ -23,7 +23,8 @@
       "@hoc": ["hoc/index"],
       "@helpers": ["helpers/index"],
       "@scss": ["scss"],
-      "@context": ["context"]
+      "@context": ["context"],
+      "@api": ["api"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],

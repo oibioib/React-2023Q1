@@ -25,6 +25,7 @@ interface AddCardFormData {
 const AddCardForm = ({ onSubmit }: AddCardFormProps) => {
   const methods = useForm<AddCardFormData>({
     reValidateMode: 'onSubmit',
+    shouldFocusError: false,
   });
 
   const {
