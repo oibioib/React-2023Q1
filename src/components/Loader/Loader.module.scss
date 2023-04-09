@@ -1,0 +1,33 @@
+@use '@scss/abstracts' as theme;
+
+.loader {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: theme.$main-gap;
+
+  &__element {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: theme.$color-secondary;
+    box-shadow: 32px 0 theme.$color-secondary, -32px 0 theme.$color-secondary;
+    position: relative;
+    animation: loading 0.4s ease-out infinite alternate;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-color: theme.$color-grey;
+    box-shadow: 32px 0 theme.$color-grey, -32px 0 theme.$color-secondary;
+  }
+  50% {
+    background-color: theme.$color-secondary;
+    box-shadow: 32px 0 theme.$color-grey, -32px 0 theme.$color-grey;
+  }
+  100% {
+    background-color: theme.$color-grey;
+    box-shadow: 32px 0 theme.$color-secondary, -32px 0 theme.$color-grey;
+  }
+}
