@@ -47,7 +47,7 @@ export const TEXT = {
     NOT_FOUND: 'Page not found!',
     GO_MAIN: 'Go to main page!',
     NO_FILE: 'No image selected',
-    NO_CARDS_FOUNDED: 'Cards not found. Please, refine your search criteria.',
+    NO_CARDS_FOUNDED: 'Nothing found. Please, refine your search criteria.',
   },
   BUTTONS: {
     SELECT_IMAGE: 'Select an image',
