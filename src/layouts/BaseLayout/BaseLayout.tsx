@@ -1,7 +1,6 @@
-import { RemoveScroll } from 'react-remove-scroll';
 import { Outlet } from 'react-router-dom';
 
-import { Modal } from '@components';
+import { ErrorBoundary, Modal } from '@components';
 import { Header } from '@layouts';
 import base from '@scss/components/base.module.scss';
 
@@ -10,7 +9,9 @@ const BaseLayout = () => {
     <div>
       <Header />
       <div className={base.wrapper}>
-        <Outlet />
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
       </div>
       <Modal />
     </div>
@@ -18,5 +19,3 @@ const BaseLayout = () => {
 };
 
 export default BaseLayout;
-
-<RemoveScroll>Only this content would be scrollable</RemoveScroll>;

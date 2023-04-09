@@ -1,0 +1,17 @@
+@use '@scss/abstracts' as theme;
+
+.main-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: theme.$main-gap;
+  margin: theme.$main-gap 0;
+
+  @media screen and (max-width: theme.$lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: theme.$xs) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

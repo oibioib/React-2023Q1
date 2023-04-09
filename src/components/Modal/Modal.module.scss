@@ -22,8 +22,8 @@
   }
 
   &__content {
-    max-width: 500px;
-    min-width: 260px;
+    width: 50%;
+    min-width: 30%;
     margin: theme.$main-gap;
     background-color: white;
     position: relative;
@@ -35,6 +35,14 @@
 
     &_active {
       transform: scale(1);
+    }
+
+    @media screen and (max-width: theme.$lg) {
+      width: 70%;
+    }
+
+    @media screen and (max-width: theme.$md) {
+      width: 80%;
     }
   }
 

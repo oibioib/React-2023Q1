@@ -1,0 +1,24 @@
+@use '@scss/abstracts' as theme;
+
+.main-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: theme.$color-bg-light;
+  border-radius: theme.$main-radius;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+  box-shadow: theme.$shadow-bottom;
+
+  &:hover {
+    box-shadow: theme.$shadow-bottom-intensive;
+  }
+
+  &__image {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+}

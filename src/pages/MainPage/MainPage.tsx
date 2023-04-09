@@ -1,44 +1,56 @@
-import { useEffect, useRef, useState } from 'react';
-import { useBeforeUnload } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import { Cards, Search } from '@components';
+import { getPhotos, preparePhoto } from '@api';
+import { Loader, MainCards, Search } from '@components';
 import { STORAGE_KEYS, TEXT } from '@constants';
 import { MainPageContext } from '@context';
 import base from '@scss/components/base.module.scss';
-
-import cards from '../../data/cards.json';
+import { MainCardProps } from 'components/types';
 
 const MainPage = () => {
   const initSearchValue = localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE) ?? '';
   const [searchValue, setSearchValue] = useState<string>(initSearchValue);
-  const value = useRef<string>(initSearchValue);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [mainCards, setMainCards] = useState<MainCardProps[]>([]);
+  const [isInit, setIsInit] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  const saveSearchValue = () => {
-    localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, value.current);
+  if (error) {
+    throw error;
+  }
+
+  const doSearch = async (searchStr: string) => {
+    try {
+      setIsLoading(true);
+      const photos = await getPhotos(searchStr);
+      setMainCards(photos.results.map(preparePhoto));
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error);
+      }
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    value.current = searchValue;
-  }, [searchValue]);
-
-  useEffect(() => saveSearchValue, []);
-  useBeforeUnload(saveSearchValue);
-
-  const cardsToRender = cards.filter(({ title, brand }) =>
-    [title, brand].some((field) =>
-      field.toLowerCase().includes(searchValue.toLowerCase().trim().replace(/[ ]+/g, ' '))
-    )
-  );
+    if (isInit) {
+      doSearch(searchValue);
+      setIsInit(false);
+    }
+  }, [isInit, searchValue]);
 
   const contextValue = {
     searchValue,
     setSearchValue,
+    doSearch,
   };
 
   return (
     <MainPageContext.Provider value={contextValue}>
       <Search />
-      {(cardsToRender.length && <Cards cards={cardsToRender} />) || (
+      {isLoading && <Loader />}
+      {!isLoading && mainCards.length > 0 && <MainCards cards={mainCards} />}
+      {!isLoading && !mainCards.length && (
         <p className={base.center}>{TEXT.MESSAGES.NO_CARDS_FOUNDED}</p>
       )}
     </MainPageContext.Provider>
