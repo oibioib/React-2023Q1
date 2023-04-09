@@ -9,7 +9,7 @@
     'image image image';
   max-width: 100%;
   border-radius: theme.$main-radius;
-  gap: theme.$main-gap / 2;
+  gap: calc(theme.$main-gap / 2);
   align-items: center;
   overflow: hidden;
 
