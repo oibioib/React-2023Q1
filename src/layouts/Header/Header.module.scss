@@ -4,6 +4,7 @@
   padding: theme.$main-gap 0;
   background-color: theme.$color-primary;
   box-shadow: theme.$shadow-bottom;
+  margin-bottom: theme.$main-gap;
 
   &__container {
     display: flex;
