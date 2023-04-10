@@ -1,8 +1,9 @@
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
 import { TEXT } from '@constants';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it } from 'vitest';
+import 'whatwg-fetch';
 
 import { routesConfig } from './App';
 
@@ -12,7 +13,9 @@ describe('Routes', () => {
       initialEntries: ['/'],
     });
     render(<RouterProvider router={router} />);
-    expect(screen.getByPlaceholderText(TEXT.PLACEHOLDERS.SEARCH)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByPlaceholderText(TEXT.PLACEHOLDERS.SEARCH)).toBeInTheDocument();
+    });
   });
 
   it('Render About US', async () => {

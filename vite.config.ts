@@ -24,10 +24,11 @@ export default defineConfig({
       ...react(),
       ...checker({
         enableBuild: false,
-        overlay: {
-          position: 'tr',
-          panelStyle,
-        },
+        // overlay: {
+        //   position: 'tr',
+        //   panelStyle,
+        // },
+        overlay: false,
         eslint: {
           lintCommand,
         },

@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { describe, expect, it } from 'vitest';
+import 'whatwg-fetch';
 
 import MainPage from './MainPage';
 
