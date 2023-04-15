@@ -16,14 +16,15 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "paths": {
-      "@pages": ["pages/index"],
-      "@components": ["components/index"],
-      "@layouts": ["layouts/index"],
-      "@constants": ["constants/index"],
-      "@hoc": ["hoc/index"],
-      "@helpers": ["helpers/index"],
+      "@pages": ["pages"],
+      "@components": ["components"],
+      "@components/types": ["components/types"],
+      "@layouts": ["layouts"],
+      "@constants": ["constants"],
+      "@helpers": ["helpers"],
       "@scss": ["scss"],
-      "@context": ["context"]
+      "@context": ["context"],
+      "@api": ["api"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],

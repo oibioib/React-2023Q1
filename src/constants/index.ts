@@ -1,4 +1,5 @@
 import { ADD_CARD_FORM } from './addCardFormSettings';
+import API from './apiSettings';
 import {
   ALERT,
   AVAILABLE,
@@ -24,4 +25,5 @@ export {
   AVAILABLE,
   IMAGE_TYPES,
   ADD_CARD_FORM,
+  API,
 };

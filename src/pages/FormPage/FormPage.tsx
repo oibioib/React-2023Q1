@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { AddCardForm, Alert, Cards } from '@components';
+import { Card } from '@components/types';
 import { ALERT } from '@constants';
-import { Card } from 'components/types';
 
 import styles from './FormPage.module.scss';
 

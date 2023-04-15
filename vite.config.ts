@@ -6,15 +6,34 @@ import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
 import { configDefaults } from 'vitest/config';
 
-const folders = ['pages', 'components', 'layouts', 'constants', 'hoc', 'helpers', 'context'];
+const folders = [
+  'pages',
+  'components',
+  'layouts',
+  'constants',
+  'hoc',
+  'helpers',
+  'context',
+  'api',
+  'scss',
+];
 
 const aliases = folders.map((folder) => ({
   find: `@${folder}`,
-  replacement: path.resolve(__dirname, `./src/${folder}/index`),
+  replacement: path.resolve(__dirname, `./src/${folder}`),
 }));
 
-const panelStyle =
-  'background-color: #23272E; opacity: 0.95; min-height: 100%; top: 0px; transform: scale(1);';
+const panelStyleOptions = {
+  'background-color': '#23272E',
+  opacity: 0.95,
+  'min-height': '100%',
+  top: '0px',
+  transform: 'scale(1)',
+};
+
+const panelStyle = Object.entries(panelStyleOptions)
+  .map(([key, value]) => `${key}: ${value};`)
+  .join('');
 
 const lintCommand = 'eslint ./src --ext .ts,.tsx --ignore-path ./.gitignore';
 
@@ -50,6 +69,6 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: [...aliases, { find: '@scss', replacement: path.resolve(__dirname, './src/scss') }],
+    alias: [...aliases],
   },
 });

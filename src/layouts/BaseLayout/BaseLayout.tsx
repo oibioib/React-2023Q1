@@ -1,4 +1,3 @@
-import { RemoveScroll } from 'react-remove-scroll';
 import { Outlet } from 'react-router-dom';
 
 import { Modal } from '@components';
@@ -18,5 +17,3 @@ const BaseLayout = () => {
 };
 
 export default BaseLayout;
-
-<RemoveScroll>Only this content would be scrollable</RemoveScroll>;

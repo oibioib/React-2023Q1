@@ -1,5 +1,5 @@
 import { Card } from '@components';
-import { Card as CardProps } from 'components/types';
+import { Card as CardProps } from '@components/types';
 
 import styles from './Cards.module.scss';
 

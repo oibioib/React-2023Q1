@@ -51,15 +51,11 @@
         bottom: 3px;
         transform: rotate(45deg);
         width: 2px;
-        height: 9px;
+        height: 8px;
         background-color: theme.$color-bg-light;
         border-radius: 1px;
       }
     }
-
-    // &::before {
-    //   content: '';
-    // }
 
     &:hover {
       span {

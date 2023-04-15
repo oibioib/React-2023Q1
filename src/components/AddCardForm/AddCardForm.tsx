@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { InputCheckbox, InputDate, InputFile, InputRadio, InputText, Select } from '@components';
+import { Card } from '@components/types';
 import { ADD_CARD_FORM, BRANDS, CONDITION, DELIVERY } from '@constants';
 import { getId } from '@helpers';
 import buttons from '@scss/components/buttons.module.scss';
-import { Card } from 'components/types';
 
 import styles from './AddCardForm.module.scss';
 
@@ -25,6 +25,7 @@ interface AddCardFormData {
 const AddCardForm = ({ onSubmit }: AddCardFormProps) => {
   const methods = useForm<AddCardFormData>({
     reValidateMode: 'onSubmit',
+    shouldFocusError: false,
   });
 
   const {

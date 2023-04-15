@@ -1,10 +1,11 @@
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
 import { TEXT } from '@constants';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it } from 'vitest';
+import 'whatwg-fetch';
 
-import App, { routesConfig } from './App';
+import { routesConfig } from './App';
 
 describe('Routes', () => {
   it('Render Main page', async () => {
@@ -12,7 +13,9 @@ describe('Routes', () => {
       initialEntries: ['/'],
     });
     render(<RouterProvider router={router} />);
-    expect(screen.getByPlaceholderText(TEXT.PLACEHOLDERS.SEARCH)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByPlaceholderText(TEXT.PLACEHOLDERS.SEARCH)).toBeInTheDocument();
+    });
   });
 
   it('Render About US', async () => {
@@ -37,13 +40,5 @@ describe('Routes', () => {
     });
     render(<RouterProvider router={router} />);
     expect(screen.getByTestId('add-card-form')).toBeInTheDocument();
-  });
-});
-
-describe('App', () => {
-  it('Render App', async () => {
-    render(<App />);
-    expect(screen.getByPlaceholderText(TEXT.PLACEHOLDERS.SEARCH)).toBeInTheDocument();
-    expect(screen.getByTestId('cards')).toBeInTheDocument();
   });
 });

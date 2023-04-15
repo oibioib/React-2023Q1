@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import { ErrorBoundary } from '@components';
 import { ROUTES } from '@constants';
 import { AppContext } from '@context';
 import { BaseLayout } from '@layouts';
@@ -17,7 +18,11 @@ export const routesConfig = [
     children: [
       {
         path: '',
-        element: <MainPage />,
+        element: (
+          <ErrorBoundary>
+            <MainPage />
+          </ErrorBoundary>
+        ),
       },
       {
         path: ROUTES.ABOUT_US,
