@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { getPhotos, preparePhoto } from '@api';
 import { Loader, MainCards, Search } from '@components';
+import { MainCardProps } from '@components/types';
 import { STORAGE_KEYS, TEXT } from '@constants';
 import { MainPageContext } from '@context';
 import base from '@scss/components/base.module.scss';
-import { MainCardProps } from 'components/types';
 
 const MainPage = () => {
   const initSearchValue = localStorage.getItem(STORAGE_KEYS.SEARCH_VALUE) ?? '';

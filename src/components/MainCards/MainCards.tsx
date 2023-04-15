@@ -1,5 +1,5 @@
 import { MainCard } from '@components';
-import { MainCardProps } from 'components/types';
+import { MainCardProps } from '@components/types';
 
 import styles from './MainCards.module.scss';
 

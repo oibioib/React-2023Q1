@@ -1,4 +1,4 @@
-import { MenuLink } from 'components/types';
+import { MenuLink } from '@components/types';
 
 export const ROUTES = {
   MAIN: '/',

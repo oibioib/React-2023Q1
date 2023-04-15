@@ -1,5 +1,5 @@
+import { MainCardProps } from '@components/types';
 import { API } from '@constants';
-import { MainCardProps } from 'components/types';
 
 export interface UnsplashPhoto {
   id: string;

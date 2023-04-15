@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { getPhoto, preparePhoto } from '@api';
-import { MainCardProps } from 'components/types';
+import { MainCardProps } from '@components/types';
 
 import styles from './MainCard.module.scss';
 
