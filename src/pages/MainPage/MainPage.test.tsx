@@ -1,7 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import { renderWithStoreProvider } from '@utils';
 import { describe, expect, it } from 'vitest';
-import 'whatwg-fetch';
 
 import MainPage from './MainPage';
 

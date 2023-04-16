@@ -5,7 +5,6 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithStoreProvider } from '@utils';
 import { describe, expect, it } from 'vitest';
-import 'whatwg-fetch';
 
 import { routesConfig } from './App';
 
