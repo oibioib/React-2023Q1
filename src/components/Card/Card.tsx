@@ -3,7 +3,7 @@ import { AVAILABLE, CONDITION, DELIVERY } from '@constants';
 import styles from './Card.module.scss';
 
 export interface Card {
-  id: number;
+  id: string;
   title: string;
   brand: string;
   image: string;
