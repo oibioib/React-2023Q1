@@ -1,18 +1,16 @@
-import base from '@scss/components/base.module.scss';
+import { TEXT } from '@constants';
 
 import styles from './ErrorMessage.module.scss';
 
 interface ErrorMessageProps {
-  message: string;
+  message?: string;
 }
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => {
   return (
-    <div
-      className={[base.center, base.warning, styles.error].join(' ')}
-      data-testid="error-message"
-    >
-      {message}
+    <div className={styles.error}>
+      <span className={styles.error__heading}>{TEXT.MESSAGES.ERROR}</span>
+      <div>{message}</div>
     </div>
   );
 };

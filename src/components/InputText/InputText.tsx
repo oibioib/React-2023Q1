@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { ErrorMessage } from '@components';
+import { FormErrorMessage } from '@components';
 import formElements from '@scss/components/form-elements.module.scss';
 
 interface InputTextProps {
@@ -26,7 +26,7 @@ const InputText = ({ inputName, errorMessage, placeholder, testId }: InputTextPr
           [formElements.input, formElements.input_warning].join(' ')
         }
       />
-      {errors[inputName] && <ErrorMessage message={errorMessage} />}
+      {errors[inputName] && <FormErrorMessage message={errorMessage} />}
     </div>
   );
 };

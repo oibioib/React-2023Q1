@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { ErrorMessage } from '@components';
+import { FormErrorMessage } from '@components';
 import formElements from '@scss/components/form-elements.module.scss';
 
 interface SelectProps {
@@ -35,7 +35,7 @@ const Select = ({ selectName, options, placeholder, errorMessage, testId }: Sele
           </option>
         ))}
       </select>
-      {errors[selectName] && <ErrorMessage message={errorMessage} />}
+      {errors[selectName] && <FormErrorMessage message={errorMessage} />}
     </div>
   );
 };

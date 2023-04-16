@@ -1,5 +1,14 @@
 @use '@scss/abstracts' as theme;
 
 .error {
-  margin: calc(theme.$main-gap / 4) 0;
+  border-radius: theme.$main-radius;
+  background-color: theme.$color-grey;
+  padding: theme.$main-gap;
+
+  &__heading {
+    display: block;
+    font-weight: 600;
+    margin-bottom: theme.$main-gap;
+    font-size: 1.8rem;
+  }
 }
