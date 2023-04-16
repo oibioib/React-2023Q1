@@ -1,34 +1,32 @@
-import { useContext } from 'react';
+import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { RemoveScroll } from 'react-remove-scroll';
 
-import { AppContext } from '@context';
-
 import styles from './Modal.module.scss';
 
-const Modal = () => {
-  const {
-    modal: { modalContent, setModalContent },
-  } = useContext(AppContext);
-
-  const onCloseModal = () => {
-    setModalContent(null);
-  };
-
+interface ModalProps {
+  children: ReactNode;
+  onCloseModal: () => void;
+}
+const Modal = ({ children, onCloseModal }: ModalProps) => {
   const onClickModalContent = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
   };
 
-  const modalStyles = modalContent ? [styles.modal, styles.modal_active].join(' ') : styles.modal;
-  const modalContentStyles = modalContent
+  const modalStyles = children ? [styles.modal, styles.modal_active].join(' ') : styles.modal;
+  const modalContentStyles = children
     ? [styles.modal__content, styles.modal__content_active].join(' ')
     : styles.modal__content;
 
   return createPortal(
-    <div className={modalStyles} onMouseDown={onCloseModal}>
+    <div className={modalStyles} onMouseDown={onCloseModal} data-testid="modal">
       <div className={modalContentStyles} onMouseDown={onClickModalContent}>
-        <span onMouseDown={onCloseModal} className={styles.modal__close} />
-        {modalContent && <RemoveScroll>{modalContent}</RemoveScroll>}
+        <span
+          onMouseDown={onCloseModal}
+          className={styles.modal__close}
+          data-testid="modal-close"
+        />
+        {children && <RemoveScroll>{children}</RemoveScroll>}
       </div>
     </div>,
     document.body

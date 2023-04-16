@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ErrorBoundary } from '@components';
 import { ROUTES } from '@constants';
-import { AppContext } from '@context';
 import { BaseLayout } from '@layouts';
 import { AboutUs, Error404, FormPage, MainPage } from '@pages';
 import 'normalize.css';
@@ -37,21 +35,8 @@ export const routesConfig = [
 ];
 
 const App = () => {
-  const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
-
-  const contextValue = {
-    modal: {
-      modalContent,
-      setModalContent,
-    },
-  };
-
   const router = createBrowserRouter(routesConfig);
-  return (
-    <AppContext.Provider value={contextValue}>
-      <RouterProvider router={router} />
-    </AppContext.Provider>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

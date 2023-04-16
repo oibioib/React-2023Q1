@@ -1,12 +1,16 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 
-import { STORAGE_KEYS, TEXT } from '@constants';
-import { MainPageContext } from '@context';
+import { TEXT } from '@constants';
+import { storeActions, useAppDispatch, useAppSelector } from '@store';
 
 import styles from './Search.module.scss';
 
+const { setAppSearchValue } = storeActions.appSearch;
+
 const Search = () => {
-  const { searchValue, setSearchValue, doSearch } = useContext(MainPageContext);
+  const dispatch = useAppDispatch();
+  const appSearchValue = useAppSelector((state) => state.appSearch.value);
+  const [searchValue, setSearchValue] = useState<string>(appSearchValue);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -14,14 +18,12 @@ const Search = () => {
 
   const onClear = () => {
     setSearchValue('');
-    doSearch('');
-    localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, '');
+    dispatch(setAppSearchValue(''));
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      localStorage.setItem(STORAGE_KEYS.SEARCH_VALUE, searchValue);
-      doSearch(searchValue);
+      dispatch(setAppSearchValue(searchValue));
     }
     if (e.key === 'Escape') onClear();
   };
