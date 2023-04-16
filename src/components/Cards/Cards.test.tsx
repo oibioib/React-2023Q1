@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import cards from '../../data/cards.json';
 import Cards from './Cards';

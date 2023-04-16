@@ -1,11 +1,12 @@
+import { generateId } from '@helpers';
 import { render, screen } from '@testing-library/react';
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import Card from './Card';
 
 describe('Card', () => {
   const card = {
-    id: 1,
+    id: generateId(),
     title: 'Test title',
     brand: 'Test brand',
     image: './cards/test.jpg',
