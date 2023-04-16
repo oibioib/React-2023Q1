@@ -32,18 +32,17 @@ const transformUnsplashPhoto: (photo: UnsplashPhoto) => MainCardProps = ({
 };
 
 const logUnsplashLimits = (response: Response, endpoint: string) => {
-  if (!process.env.VITEST) {
-    const limit = response.headers.get('X-Ratelimit-Limit') || '[No limit info]';
-    const remaining = response.headers.get('X-Ratelimit-Remaining') || '[No limit info]';
-    console.log(
-      `%c INFO / %c ${endpoint} %c / Usplash API limit - %c${remaining}%c (${limit}) per hour`,
-      `color: MediumPurple`,
-      `color: orange; font-weight: 600;`,
-      `color: MediumPurple`,
-      `color: orange; font-weight: 600;`,
-      `color: MediumPurple`
-    );
-  }
+  if (import.meta.env.VITEST) return;
+  const limit = response.headers.get('X-Ratelimit-Limit') || '[No limit info]';
+  const remaining = response.headers.get('X-Ratelimit-Remaining') || '[No limit info]';
+  console.log(
+    `%c INFO / %c ${endpoint} %c / Usplash API limit - %c${remaining}%c (${limit}) per hour`,
+    `color: MediumPurple`,
+    `color: orange; font-weight: 600;`,
+    `color: MediumPurple`,
+    `color: orange; font-weight: 600;`,
+    `color: MediumPurple`
+  );
 };
 
 export { transformUnsplashPhoto, logUnsplashLimits };
