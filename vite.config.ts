@@ -15,6 +15,7 @@ const folders = [
   'scss',
   'store',
   'mocks',
+  'utils',
 ];
 
 const aliases = folders.map((folder) => ({

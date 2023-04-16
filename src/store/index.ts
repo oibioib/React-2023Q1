@@ -1,9 +1,9 @@
-import { useGetPhotoQuery, useGetPhotosQuery } from './api/unsplashApi';
+import { unsplashApi, useGetPhotoQuery, useGetPhotosQuery } from './api/unsplashApi';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { appSearchSlice } from './slice/appSearchSlice';
 import { cardFormSlice } from './slice/cardFormSlice';
-import { store } from './store';
-import type { RootState } from './store';
+import { rootReducer, setupStore } from './store';
+import type { AppStore, RootState } from './store';
 
 const storeActions = {
   appSearch: {
@@ -18,4 +18,5 @@ const storeActions = {
   },
 };
 
-export { store, storeActions, useAppDispatch, useAppSelector, RootState };
+export { setupStore, storeActions, useAppDispatch, useAppSelector, unsplashApi, rootReducer };
+export type { RootState, AppStore };

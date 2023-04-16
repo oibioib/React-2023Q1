@@ -24,7 +24,8 @@
       "@helpers": ["helpers"],
       "@scss": ["scss"],
       "@store": ["store"],
-      "@mocks": ["mocks"]
+      "@mocks": ["mocks"],
+      "@utils": ["utils"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],

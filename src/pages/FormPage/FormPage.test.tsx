@@ -1,14 +1,14 @@
 import { MemoryRouter } from 'react-router-dom';
 
-import { renderWithProviders } from '@mocks';
 import { screen } from '@testing-library/react';
+import { renderWithStoreProvider } from '@utils';
 import { describe, expect, it } from 'vitest';
 
 import FormPage from './FormPage';
 
 describe('FormPage', () => {
   it('Render FormPage', () => {
-    renderWithProviders(
+    renderWithStoreProvider(
       <MemoryRouter initialEntries={['/form']}>
         <FormPage />
       </MemoryRouter>
