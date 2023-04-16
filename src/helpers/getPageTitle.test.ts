@@ -1,6 +1,6 @@
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import getPageTitle from './getPageTitle';
+import { getPageTitle } from './helpers';
 
 const testRoute = {
   about: '/about',
