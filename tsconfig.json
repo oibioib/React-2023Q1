@@ -23,8 +23,8 @@
       "@constants": ["constants"],
       "@helpers": ["helpers"],
       "@scss": ["scss"],
-      "@context": ["context"],
-      "@api": ["api"]
+      "@store": ["store"],
+      "@mocks": ["mocks"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],
