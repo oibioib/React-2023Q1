@@ -3,15 +3,19 @@ import { useState } from 'react';
 import { AddCardForm, Alert, Cards } from '@components';
 import { Card } from '@components/types';
 import { ALERT } from '@constants';
+import { storeActions, useAppDispatch, useAppSelector } from '@store';
 
 import styles from './FormPage.module.scss';
 
+const { addFormCard } = storeActions.cardForm;
+
 const FormPage = () => {
+  const dispatch = useAppDispatch();
+  const cards = useAppSelector((state) => state.cardForm.cards);
   const [isAllert, setIsAllert] = useState<boolean>(false);
-  const [cards, setCards] = useState<Card[]>([]);
 
   const onSubmit = (card: Card) => {
-    setCards((cards) => [...cards, card]);
+    dispatch(addFormCard(card));
     setIsAllert(true);
   };
 
