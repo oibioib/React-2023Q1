@@ -48,6 +48,7 @@ export const TEXT = {
     GO_MAIN: 'Go to main page!',
     NO_FILE: 'No image selected',
     NO_CARDS_FOUNDED: 'Nothing found. Please, refine your search criteria.',
+    ERROR: 'Oops! Something went wrong...',
   },
   BUTTONS: {
     SELECT_IMAGE: 'Select an image',
