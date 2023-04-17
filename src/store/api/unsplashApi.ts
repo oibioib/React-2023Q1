@@ -33,7 +33,6 @@ export interface UnsplashResult {
 export const unsplashApi = createApi({
   reducerPath: 'unsplashApi',
   baseQuery: fetchBaseQuery({ baseUrl: API.URL }),
-  keepUnusedDataFor: 0,
   endpoints: (builder) => ({
     getPhotos: builder.query<MainCardProps[], string>({
       query: (searchValue) => ({
