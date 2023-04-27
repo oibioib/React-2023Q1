@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: center;
   gap: calc(theme.$main-gap * 2);
+  max-width: 240px;
+  width: 60vw;
 
   &__link {
     padding: calc(theme.$main-gap / 4) 0;

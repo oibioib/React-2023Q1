@@ -19,11 +19,12 @@
     "*.(ts|tsx)": [
       "npm run lint:fix"
     ],
-    "*.(ts|tsx|scss|cssjson|md)": [
+    "*.(ts|tsx|scss|css|json|md)": [
       "npm run lint:format"
     ]
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.2",
     "@reduxjs/toolkit": "^1.9.3",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",

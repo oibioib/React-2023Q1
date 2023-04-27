@@ -39,7 +39,7 @@ const MainCard = ({ id, thumb, description, author }: MainCardProps) => {
       </div>
       {isModalCardOpen && (
         <Modal onCloseModal={() => setIsModalCardOpen(false)}>
-          <MainCardModal id={id} />
+          <MainCardModal id={id} preview={thumb} />
         </Modal>
       )}
     </>

@@ -21,11 +21,9 @@ const Modal = ({ children, onCloseModal }: ModalProps) => {
   return createPortal(
     <div className={modalStyles} onMouseDown={onCloseModal} data-testid="modal">
       <div className={modalContentStyles} onMouseDown={onClickModalContent}>
-        <span
-          onMouseDown={onCloseModal}
-          className={styles.modal__close}
-          data-testid="modal-close"
-        />
+        <div className={styles.modal__close}>
+          <span onMouseDown={onCloseModal} data-testid="modal-close" />
+        </div>
         {children && <RemoveScroll>{children}</RemoveScroll>}
       </div>
     </div>,
