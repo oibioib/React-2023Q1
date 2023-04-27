@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { getId } from '@helpers';
+import { generateId } from '@helpers';
 
 import styles from './InputCheckbox.module.scss';
 
@@ -11,7 +11,7 @@ interface InputCheckboxProps {
 }
 
 const InputCheckbox = ({ inputName, labelText, testId }: InputCheckboxProps) => {
-  const id = getId().toString();
+  const id = generateId();
   const { register } = useFormContext();
 
   return (

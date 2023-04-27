@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { ErrorMessage } from '@components';
+import { FormErrorMessage } from '@components';
 import { validateForm } from '@helpers';
 import formElements from '@scss/components/form-elements.module.scss';
 
@@ -35,7 +35,7 @@ const InputDate = ({ inputName, errorMessage, testId }: InputDateProps) => {
           [formElements.input, formElements.input_warning].join(' ')
         }
       />
-      {errors[inputName] && <ErrorMessage message={errorMessage} />}
+      {errors[inputName] && <FormErrorMessage message={errorMessage} />}
     </div>
   );
 };

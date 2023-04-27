@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "title": "Redmi 10",
     "brand": "Xiaomi",
     "image": "./cards/1_1.jpg",
@@ -9,7 +9,7 @@
     "delivery": true
   },
   {
-    "id": 2,
+    "id": "2",
     "title": "iPhone 12",
     "brand": "Apple",
     "image": "./cards/2_1.jpg",
@@ -18,7 +18,7 @@
     "delivery": true
   },
   {
-    "id": 3,
+    "id": "3",
     "title": "iPhone 14",
     "brand": "Apple",
     "image": "./cards/3_1.jpg",
@@ -27,7 +27,7 @@
     "delivery": true
   },
   {
-    "id": 4,
+    "id": "4",
     "title": "Redmi Note 11",
     "brand": "Xiaomi",
     "image": "./cards/4_1.jpg",
@@ -36,7 +36,7 @@
     "delivery": true
   },
   {
-    "id": 5,
+    "id": "5",
     "title": "Galaxy S21",
     "brand": "Samsung",
     "image": "./cards/5_1.jpg",
@@ -45,7 +45,7 @@
     "delivery": true
   },
   {
-    "id": 6,
+    "id": "6",
     "title": "Galaxy S22 Ultra",
     "brand": "Samsung",
     "image": "./cards/6_1.jpg",
@@ -54,7 +54,7 @@
     "delivery": true
   },
   {
-    "id": 7,
+    "id": "7",
     "title": "Nova Y70",
     "brand": "Huawei",
     "image": "./cards/7_1.jpg",
@@ -63,7 +63,7 @@
     "delivery": true
   },
   {
-    "id": 8,
+    "id": "8",
     "title": "C21Y",
     "brand": "Realme",
     "image": "./cards/8_1.jpg",
@@ -72,7 +72,7 @@
     "delivery": true
   },
   {
-    "id": 9,
+    "id": "9",
     "title": "MateBook D 15",
     "brand": "Huawei",
     "image": "./cards/9_1.jpg",
@@ -81,7 +81,7 @@
     "delivery": true
   },
   {
-    "id": 10,
+    "id": "10",
     "title": "MacBook Air 13 M1",
     "brand": "Apple",
     "image": "./cards/10_1.jpg",
@@ -90,7 +90,7 @@
     "delivery": true
   },
   {
-    "id": 11,
+    "id": "11",
     "title": "X515EA",
     "brand": "Asus",
     "image": "./cards/11_1.jpg",
@@ -99,7 +99,7 @@
     "delivery": true
   },
   {
-    "id": 12,
+    "id": "12",
     "title": "VivoBook 15",
     "brand": "Asus",
     "image": "./cards/12_1.jpg",
@@ -108,7 +108,7 @@
     "delivery": true
   },
   {
-    "id": 13,
+    "id": "13",
     "title": "Legion 5",
     "brand": "Lenovo",
     "image": "./cards/13_1.jpg",
@@ -117,7 +117,7 @@
     "delivery": true
   },
   {
-    "id": 14,
+    "id": "14",
     "title": "IdeaPad 3",
     "brand": "Lenovo",
     "image": "./cards/14_1.jpg",
@@ -126,7 +126,7 @@
     "delivery": true
   },
   {
-    "id": 15,
+    "id": "15",
     "title": "50NANO766QA",
     "brand": "LG",
     "image": "./cards/15_1.jpg",
@@ -135,7 +135,7 @@
     "delivery": true
   },
   {
-    "id": 16,
+    "id": "16",
     "title": "UE32T5300AUX",
     "brand": "Samsung",
     "image": "./cards/16_1.jpg",
@@ -144,7 +144,7 @@
     "delivery": true
   },
   {
-    "id": 17,
+    "id": "17",
     "title": "UE43AU9070UX",
     "brand": "Samsung",
     "image": "./cards/17_1.jpg",
@@ -153,7 +153,7 @@
     "delivery": true
   },
   {
-    "id": 18,
+    "id": "18",
     "title": "Mi TV P1 55",
     "brand": "Xiaomi",
     "image": "./cards/18_1.jpg",
@@ -162,7 +162,7 @@
     "delivery": true
   },
   {
-    "id": 19,
+    "id": "19",
     "title": "50NANO769QA",
     "brand": "LG",
     "image": "./cards/19_1.jpg",
@@ -171,7 +171,7 @@
     "delivery": true
   },
   {
-    "id": 20,
+    "id": "20",
     "title": "Redmi Watch 2",
     "brand": "Xiaomi",
     "image": "./cards/20_1.jpg",

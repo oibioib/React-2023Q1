@@ -22,39 +22,36 @@
   }
 
   &__content {
-    width: 50%;
-    min-width: 30%;
     margin: theme.$main-gap;
     background-color: white;
     position: relative;
     border-radius: theme.$main-radius;
     padding: theme.$main-gap;
     transform: scale(0);
-    transition: 0.1s;
+    transition: 0.3s;
     box-shadow: theme.$shadow-bottom-intensive;
 
     &_active {
       transform: scale(1);
     }
-
-    @media screen and (max-width: theme.$lg) {
-      width: 70%;
-    }
-
-    @media screen and (max-width: theme.$md) {
-      width: 80%;
-    }
   }
 
   &__close {
-    @include theme.close-button(theme.$color-grey, theme.$color-primary, 2rem, 2rem);
-
     position: absolute;
-    right: calc(theme.$main-gap / 2);
-    top: calc(theme.$main-gap / 2);
+    right: 0;
+    top: 0;
+    padding: calc(theme.$main-gap / 2);
+    background-color: white;
+    z-index: 1;
+    border-radius: theme.$main-radius;
 
-    &:hover {
-      cursor: pointer;
+    span {
+      display: block;
+      @include theme.close-button(theme.$color-grey, theme.$color-primary, 2rem, 2rem);
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

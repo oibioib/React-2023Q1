@@ -1,7 +1,4 @@
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-
-import { AppContext } from '@context';
 
 import styles from './MobileMenu.module.scss';
 
@@ -14,17 +11,10 @@ export interface MenuLink {
 
 interface MenuProps {
   links: MenuLink[];
+  onLinkClick: () => void;
 }
 
-const MobileMenu = ({ links }: MenuProps) => {
-  const {
-    modal: { setModalContent },
-  } = useContext(AppContext);
-
-  const onLinkClick = () => {
-    setModalContent(null);
-  };
-
+const MobileMenu = ({ links, onLinkClick }: MenuProps) => {
   return (
     <nav className={styles.nav}>
       {links.map(({ id, route, anchor }) => {

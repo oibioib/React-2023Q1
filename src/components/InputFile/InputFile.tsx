@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { ErrorMessage } from '@components';
+import { FormErrorMessage } from '@components';
 import { IMAGE_TYPES, TEXT } from '@constants';
 import { validateForm } from '@helpers';
 import formElements from '@scss/components/form-elements.module.scss';
@@ -68,7 +68,7 @@ const InputFile = ({ errorMessage, inputName, testId }: InputFileProps) => {
       </label>
       <div className={styles['input-file__message']}>{message}</div>
       {image && <img src={previewImage} className={styles['input-file__image']} />}
-      {errors[inputName] && <ErrorMessage message={errorMessage} />}
+      {errors[inputName] && <FormErrorMessage message={errorMessage} />}
     </div>
   );
 };

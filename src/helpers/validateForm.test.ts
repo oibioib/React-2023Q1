@@ -1,7 +1,7 @@
 import { IMAGE_TYPES } from '@constants';
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import validateForm from './validateForm';
+import { validateForm } from './helpers';
 
 const testTypes = {
   jpeg: 'image/jpeg',

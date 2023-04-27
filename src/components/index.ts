@@ -4,6 +4,7 @@ import Card from './Card/Card';
 import Cards from './Cards/Cards';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
+import FormErrorMessage from './FormErrorMessage/FormErrorMessage';
 import InputCheckbox from './InputCheckbox/InputCheckbox';
 import InputDate from './InputDate/InputDate';
 import InputFile from './InputFile/InputFile';
@@ -32,7 +33,7 @@ export {
   InputCheckbox,
   InputRadio,
   InputFile,
-  ErrorMessage,
+  FormErrorMessage,
   Modal,
   MobileMenu,
   MainCard,
@@ -40,4 +41,5 @@ export {
   MainCardModal,
   ErrorBoundary,
   Loader,
+  ErrorMessage,
 };

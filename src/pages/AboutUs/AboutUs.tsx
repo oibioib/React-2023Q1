@@ -1,6 +1,6 @@
 const AboutUs = () => {
   return (
-    <div data-testid="about">
+    <div>
       <p>Lorem ipsum</p>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, ratione ut eos maxime

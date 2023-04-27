@@ -11,29 +11,17 @@ const folders = [
   'components',
   'layouts',
   'constants',
-  'hoc',
   'helpers',
-  'context',
-  'api',
   'scss',
+  'store',
+  'mocks',
+  'utils',
 ];
 
 const aliases = folders.map((folder) => ({
   find: `@${folder}`,
   replacement: path.resolve(__dirname, `./src/${folder}`),
 }));
-
-const panelStyleOptions = {
-  'background-color': '#23272E',
-  opacity: 0.95,
-  'min-height': '100%',
-  top: '0px',
-  transform: 'scale(1)',
-};
-
-const panelStyle = Object.entries(panelStyleOptions)
-  .map(([key, value]) => `${key}: ${value};`)
-  .join('');
 
 const lintCommand = 'eslint ./src --ext .ts,.tsx --ignore-path ./.gitignore';
 
@@ -43,10 +31,7 @@ export default defineConfig({
       ...react(),
       ...checker({
         enableBuild: false,
-        overlay: {
-          position: 'tr',
-          panelStyle,
-        },
+        overlay: false,
         eslint: {
           lintCommand,
         },

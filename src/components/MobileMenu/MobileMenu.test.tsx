@@ -1,7 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 
 import { render, screen } from '@testing-library/react';
-import { describe, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import MobileMenu from './MobileMenu';
 
@@ -36,7 +36,7 @@ describe('MobileMenu', () => {
   it('Render all links', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <MobileMenu links={testMenuLinks} />
+        <MobileMenu links={testMenuLinks} onLinkClick={vi.fn} />
       </MemoryRouter>
     );
 

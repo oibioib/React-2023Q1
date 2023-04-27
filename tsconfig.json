@@ -23,8 +23,9 @@
       "@constants": ["constants"],
       "@helpers": ["helpers"],
       "@scss": ["scss"],
-      "@context": ["context"],
-      "@api": ["api"]
+      "@store": ["store"],
+      "@mocks": ["mocks"],
+      "@utils": ["utils"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"],

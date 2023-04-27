@@ -1,13 +1,14 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 
-import { ErrorBoundary, MainCardModal } from '@components';
-import { AppContext } from '@context';
+import { MainCardModal, Modal } from '@components';
 
 import styles from './MainCard.module.scss';
 
 export interface MainCardProps {
   id: string;
   img: string;
+  width: number;
+  height: number;
   thumb: string;
   color: string;
   description: string;
@@ -19,29 +20,29 @@ export interface MainCardProps {
 
 const MainCard = ({ id, thumb, description, author }: MainCardProps) => {
   const info = [description, author].filter((field) => field).join(' - ');
-
-  const {
-    modal: { setModalContent },
-  } = useContext(AppContext);
-
-  const openMainCardModal = () => {
-    setModalContent(
-      <ErrorBoundary>
-        <MainCardModal id={id} />
-      </ErrorBoundary>
-    );
-  };
+  const [isModalCardOpen, setIsModalCardOpen] = useState<boolean>(false);
 
   return (
-    <div className={styles['main-card']} onClick={openMainCardModal}>
-      <img
-        className={styles['main-card__image']}
-        src={thumb}
-        alt={info}
-        title={info}
-        aria-label="photo"
-      />
-    </div>
+    <>
+      <div
+        className={styles['main-card']}
+        onClick={() => setIsModalCardOpen(true)}
+        data-testid="main-card"
+      >
+        <img
+          className={styles['main-card__image']}
+          src={thumb}
+          alt={info}
+          title={info}
+          aria-label="photo"
+        />
+      </div>
+      {isModalCardOpen && (
+        <Modal onCloseModal={() => setIsModalCardOpen(false)}>
+          <MainCardModal id={id} preview={thumb} />
+        </Modal>
+      )}
+    </>
   );
 };
 

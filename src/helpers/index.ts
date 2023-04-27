@@ -1,6 +1,19 @@
-import getId from './getId';
-import getPageTitle from './getPageTitle';
-import toTitleCase from './toTitleCase';
-import validateForm from './validateForm';
+import {
+  formatDate,
+  generateId,
+  getErrorMessage,
+  getPageTitle,
+  loadImage,
+  toTitleCase,
+  validateForm,
+} from './helpers';
 
-export { getPageTitle, validateForm, getId, toTitleCase };
+export {
+  getPageTitle,
+  validateForm,
+  generateId,
+  toTitleCase,
+  formatDate,
+  loadImage,
+  getErrorMessage,
+};

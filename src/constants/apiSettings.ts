@@ -4,9 +4,13 @@ const API = {
     PHOTOS: '/search/photos',
     SINGLE_PHOTO: '/photos',
   },
-  DEFAULT_QUERY: 'javascript',
+  DEFAULT_QUERY: 'cat',
   ERRORS: {
     NO_CONNECTION: 'No connection with server. Try again later.',
+  },
+  PARAMS: {
+    PER_PAGE: 20,
+    ORIENTATION: 'landscape',
   },
 };
 

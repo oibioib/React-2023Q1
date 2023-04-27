@@ -2,7 +2,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { TEXT } from '@constants';
 import { render, screen } from '@testing-library/react';
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import Error404 from './Error404';
 
