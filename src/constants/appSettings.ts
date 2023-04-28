@@ -1,5 +1,7 @@
 import { MenuLink } from '@components/types';
 
+export const APP_NAME = 'RS School - React-2023Q1';
+
 export const ROUTES = {
   MAIN: '/',
   ABOUT_US: 'about',
@@ -81,3 +83,5 @@ export const DELIVERY = {
 };
 
 export const IMAGE_TYPES = ['image/jpeg', 'image/png'];
+
+export const HASH = Date.now();

@@ -2,10 +2,12 @@ import { ADD_CARD_FORM } from './addCardFormSettings';
 import API from './apiSettings';
 import {
   ALERT,
+  APP_NAME,
   AVAILABLE,
   BRANDS,
   CONDITION,
   DELIVERY,
+  HASH,
   IMAGE_TYPES,
   MENU_LINKS,
   ROUTES,
@@ -26,4 +28,6 @@ export {
   IMAGE_TYPES,
   ADD_CARD_FORM,
   API,
+  APP_NAME,
+  HASH,
 };
