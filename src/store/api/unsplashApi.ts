@@ -1,7 +1,7 @@
 import { MainCardProps } from '@components/types';
 import { API } from '@constants';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { createApi, fetchBaseQuery } from '../reduxToolkitRaw';
 import { logUnsplashLimits, transformUnsplashPhoto } from './unsplashApi.helpers';
 
 export interface UnsplashPhoto {

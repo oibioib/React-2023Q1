@@ -1,6 +1,7 @@
-import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
+import { PreloadedState } from '@reduxjs/toolkit';
 
 import { unsplashApi } from './api/unsplashApi';
+import { combineReducers, configureStore } from './reduxToolkitRaw';
 import appSearchReducer from './slice/appSearchSlice';
 import cardFormReducer from './slice/cardFormSlice';
 
@@ -18,7 +19,6 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   });
 };
 
-export const store = setupStore();
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['dispatch'];

@@ -2,7 +2,7 @@ import { unsplashApi, useGetPhotoQuery, useGetPhotosQuery } from './api/unsplash
 import { useAppDispatch, useAppSelector } from './hooks';
 import { appSearchSlice } from './slice/appSearchSlice';
 import { cardFormSlice } from './slice/cardFormSlice';
-import { rootReducer, setupStore, store } from './store';
+import { rootReducer, setupStore } from './store';
 import type { AppStore, RootState } from './store';
 
 const storeActions = {
@@ -18,13 +18,5 @@ const storeActions = {
   },
 };
 
-export {
-  store,
-  setupStore,
-  storeActions,
-  useAppDispatch,
-  useAppSelector,
-  unsplashApi,
-  rootReducer,
-};
+export { setupStore, storeActions, useAppDispatch, useAppSelector, unsplashApi, rootReducer };
 export type { RootState, AppStore };
