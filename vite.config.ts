@@ -16,6 +16,7 @@ const folders = [
   'store',
   'mocks',
   'utils',
+  'routes',
 ];
 
 const aliases = folders.map((folder) => ({
@@ -23,17 +24,15 @@ const aliases = folders.map((folder) => ({
   replacement: path.resolve(__dirname, `./src/${folder}`),
 }));
 
-const lintCommand = 'eslint ./src --ext .ts,.tsx --ignore-path ./.gitignore';
-
 export default defineConfig({
   plugins: [
     {
-      ...react(),
+      ...react({ fastRefresh: false }),
       ...checker({
         enableBuild: false,
         overlay: false,
         eslint: {
-          lintCommand,
+          lintCommand: 'eslint ./src --ext .ts,.tsx --ignore-path ./.gitignore',
         },
       }),
       apply: 'serve',
@@ -50,10 +49,22 @@ export default defineConfig({
       provider: 'c8',
       all: true,
       reporter: 'text',
-      exclude: [...configDefaults.coverage.exclude, '**/index.ts', '**/types.ts', '**/main.tsx'],
+      exclude: [...configDefaults.coverage.exclude, '**/index.ts', '**/types.ts'],
     },
   },
   resolve: {
     alias: [...aliases],
+  },
+  build: {
+    rollupOptions: {
+      input: path.resolve(__dirname, './src/AppClient.tsx'),
+      output: {
+        entryFileNames: `script.js`,
+        assetFileNames: ({ name }) => {
+          if (name.endsWith('.css')) return 'styles.css';
+          return '[name].[ext]';
+        },
+      },
+    },
   },
 });
