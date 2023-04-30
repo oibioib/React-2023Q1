@@ -7,7 +7,6 @@ import {
   BRANDS,
   CONDITION,
   DELIVERY,
-  HASH,
   IMAGE_TYPES,
   MENU_LINKS,
   ROUTES,
@@ -29,5 +28,4 @@ export {
   ADD_CARD_FORM,
   API,
   APP_NAME,
-  HASH,
 };

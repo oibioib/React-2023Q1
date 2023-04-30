@@ -1,10 +1,12 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { APP_NAME } from '@constants';
 import { PreloadedState } from '@reduxjs/toolkit';
 import { RootState } from '@store';
 
 import favicon from '../../assets/favicon.svg';
+
+if (typeof window === 'undefined') React.useLayoutEffect = React.useEffect;
 
 interface HtmlTemplateProps {
   children: ReactNode;

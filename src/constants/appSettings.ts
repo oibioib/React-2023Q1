@@ -30,7 +30,7 @@ export const MENU_LINKS: MenuLink[] = [
   {
     id: 4,
     route: '/404',
-    title: 'Error 404',
+    title: '404',
     anchor: '404',
   },
 ];
@@ -83,5 +83,3 @@ export const DELIVERY = {
 };
 
 export const IMAGE_TYPES = ['image/jpeg', 'image/png'];
-
-export const HASH = Date.now();

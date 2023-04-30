@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { ErrorMessage, Loader, MainCards, Search } from '@components';
 import { getErrorMessage } from '@helpers';
@@ -7,8 +7,13 @@ import { storeActions, useAppSelector } from '@store';
 const { useGetPhotosQuery } = storeActions.unsplashApi;
 
 const MainPage = () => {
+  const [searchValue, setSearchValue] = useState<string>('');
   const appSearchValue = useAppSelector((state) => state.appSearch.value);
-  const { data, isFetching, isError, isLoading, error } = useGetPhotosQuery(appSearchValue);
+  const { data, isFetching, isError, isLoading, error } = useGetPhotosQuery(searchValue);
+
+  useEffect(() => {
+    setSearchValue(appSearchValue);
+  }, [appSearchValue]);
 
   const dataToRender = useMemo(() => {
     if (isFetching || isLoading) return <Loader />;

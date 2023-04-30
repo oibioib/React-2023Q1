@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
-
 import { ErrorMessage, Loader } from '@components';
-import { formatDate, getErrorMessage, loadImage } from '@helpers';
+import { formatDate, getErrorMessage } from '@helpers';
 import { storeActions } from '@store';
 
 import styles from './MainCardModal.module.scss';
@@ -11,16 +9,8 @@ const { useGetPhotoQuery } = storeActions.unsplashApi;
 const MainCardModal = ({ id, preview }: { id: string; preview: string }) => {
   const { data, isFetching, isError, isLoading, error } = useGetPhotoQuery(id);
 
-  useEffect(() => {
-    (async () => {
-      if (data) {
-        await loadImage(data.img);
-      }
-    })();
-  }, [data]);
-
   return (
-    <div className={styles['main-card-modal']}>
+    <div className={styles['main-card-modal']} data-testid="modal-card">
       <div className={(isError && styles['error']) || undefined}>
         {data && (
           <>
