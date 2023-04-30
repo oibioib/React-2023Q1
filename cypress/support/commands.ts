@@ -1,6 +1,21 @@
-import { ADD_CARD_FORM, ALERT, TEXT } from '@constants';
+import { ADD_CARD_FORM, ALERT, BRANDS, TEXT } from '@constants';
 
 Cypress.Commands.add('submitForm', () => {
+  cy.get(`[name="${ADD_CARD_FORM.ELEMENT_NAME.TITLE}"`).type('Card title');
+  const [brand] = BRANDS;
+  if (brand) {
+    cy.get(`[name="${ADD_CARD_FORM.ELEMENT_NAME.BRAND}"`).select(brand);
+  }
+  cy.get(`[name="${ADD_CARD_FORM.ELEMENT_NAME.DATE}"`).type('3000-01-01');
+  cy.get(`label[for="${ADD_CARD_FORM.ELEMENT_NAME.DELIVERY}"`).click();
+  cy.get(`label[for="${ADD_CARD_FORM.ELEMENT_NAME.CONDITION}"`).first().click();
+  cy.get(`label[for="${ADD_CARD_FORM.ELEMENT_NAME.IMAGE}"`).selectFile({
+    contents: Cypress.Buffer.from(''),
+    fileName: 'test.jpg',
+    mimeType: 'image/jpeg',
+    lastModified: Date.now(),
+  });
+
   cy.contains('Submit').as('formSubmit');
   cy.get('@formSubmit').should('be.visible');
   cy.get('@formSubmit').click();
