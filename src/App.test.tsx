@@ -1,12 +1,11 @@
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
 import { TEXT } from '@constants';
+import { routesConfig } from '@routes';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithStoreProvider } from '@utils';
 import { describe, expect, it } from 'vitest';
-
-import { routesConfig } from './App';
 
 const AppRouterProvider = ({ route }: { route: string }) => {
   const router = createMemoryRouter(routesConfig, {

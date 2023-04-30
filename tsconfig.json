@@ -22,7 +22,6 @@
   "include": ["./src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "ts-node": {
-    "esm": true,
-    "transpileOnly": true
+    "esm": true
   }
 }
