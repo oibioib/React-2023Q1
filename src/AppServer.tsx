@@ -21,6 +21,7 @@ export const render: ServerRender = async (url, clientScript, clientStyle, opts)
 
   const store = setupStore();
   await store.dispatch(unsplashApi.endpoints.getPhotos.initiate(''));
+  await Promise.all(store.dispatch(unsplashApi.util.getRunningQueriesThunk()));
   const preloadedState = store.getState();
 
   const stream = ReactDOMServer.renderToPipeableStream(
