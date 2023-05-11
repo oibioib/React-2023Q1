@@ -19,8 +19,9 @@ const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProp
     formState: { errors },
   } = useFormContext();
 
-  const optionsRender = options.map((option) => {
+  const optionsRender = options.map((option, i) => {
     const optionValue = toTitleCase(option);
+    const id = `${groupName}-${i}`;
 
     return (
       <div key={option} className={styles['input-radio__block']}>
@@ -29,9 +30,9 @@ const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProp
           {...register(groupName, { required: true })}
           type="radio"
           value={optionValue}
-          id={groupName}
+          id={id}
         />
-        <label htmlFor={groupName}>{optionValue}</label>
+        <label htmlFor={id}>{optionValue}</label>
       </div>
     );
   });
