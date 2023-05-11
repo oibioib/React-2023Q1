@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { FormErrorMessage } from '@components';
-import { generateId, toTitleCase } from '@helpers';
+import { toTitleCase } from '@helpers';
 import formElements from '@scss/components/form-elements.module.scss';
 
 import styles from './InputRadio.module.scss';
@@ -19,9 +19,9 @@ const InputRadio = ({ options, groupName, errorMessage, testId }: InputRadioProp
     formState: { errors },
   } = useFormContext();
 
-  const optionsRender = options.map((option) => {
+  const optionsRender = options.map((option, i) => {
     const optionValue = toTitleCase(option);
-    const id = generateId();
+    const id = `${groupName}-${i}`;
 
     return (
       <div key={option} className={styles['input-radio__block']}>

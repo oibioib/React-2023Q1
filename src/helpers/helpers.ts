@@ -17,13 +17,6 @@ export const validateForm = {
 
 export const generateId = () => uuidv4();
 
-export const loadImage = (src: string) =>
-  new Promise((resolve) => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => resolve(true);
-  });
-
 export const formatDate = (date: string) => {
   const data = new Date(date);
   return `${data.getDate().toString().padStart(2, '0')}.${(data.getMonth() + 1)

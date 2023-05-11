@@ -12,22 +12,16 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "resolveJsonModule": true,
     "noEmit": true,
     "paths": {
-      "@pages": ["pages"],
-      "@components": ["components"],
-      "@components/types": ["components/types"],
-      "@layouts": ["layouts"],
-      "@constants": ["constants"],
-      "@helpers": ["helpers"],
-      "@scss": ["scss"],
-      "@store": ["store"],
-      "@mocks": ["mocks"],
-      "@utils": ["utils"]
+      "@*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*", "styled.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["./src/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "ts-node": {
+    "esm": true
+  }
 }

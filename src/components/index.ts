@@ -5,6 +5,7 @@ import Cards from './Cards/Cards';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
 import FormErrorMessage from './FormErrorMessage/FormErrorMessage';
+import HtmlTemplate from './HtmlTemplate/HtmlTemplate';
 import InputCheckbox from './InputCheckbox/InputCheckbox';
 import InputDate from './InputDate/InputDate';
 import InputFile from './InputFile/InputFile';
@@ -42,4 +43,5 @@ export {
   ErrorBoundary,
   Loader,
   ErrorMessage,
+  HtmlTemplate,
 };

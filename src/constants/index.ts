@@ -2,6 +2,7 @@ import { ADD_CARD_FORM } from './addCardFormSettings';
 import API from './apiSettings';
 import {
   ALERT,
+  APP_NAME,
   AVAILABLE,
   BRANDS,
   CONDITION,
@@ -26,4 +27,5 @@ export {
   IMAGE_TYPES,
   ADD_CARD_FORM,
   API,
+  APP_NAME,
 };

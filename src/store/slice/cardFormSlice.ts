@@ -1,6 +1,7 @@
 import { Card } from '@components/types';
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+
+import { createSlice } from '../reduxToolkitRaw';
 
 const initialState: { cards: Card[] } = {
   cards: [],

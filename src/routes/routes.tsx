@@ -1,14 +1,9 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
 import { ErrorBoundary } from '@components';
 import { ROUTES } from '@constants';
 import { BaseLayout } from '@layouts';
 import { AboutUs, Error404, FormPage, MainPage } from '@pages';
-import 'normalize.css';
 
-import './App.scss';
-
-export const routesConfig = [
+const routesConfig = [
   {
     path: '',
     element: <BaseLayout />,
@@ -34,9 +29,4 @@ export const routesConfig = [
   },
 ];
 
-const App = () => {
-  const router = createBrowserRouter(routesConfig);
-  return <RouterProvider router={router} />;
-};
-
-export default App;
+export default routesConfig;

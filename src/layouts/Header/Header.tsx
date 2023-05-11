@@ -20,7 +20,11 @@ const Header = () => {
           <div className={styles.header__container}>
             <h1 className={styles.header__title}>{pageTitle}</h1>
             <Menu links={MENU_LINKS} />
-            <div className={styles.header__burger} onClick={() => setIsModalMenuOpen(true)}>
+            <div
+              className={styles.header__burger}
+              onClick={() => setIsModalMenuOpen(true)}
+              data-testid="menu-burger"
+            >
               <span />
               <span />
               <span />

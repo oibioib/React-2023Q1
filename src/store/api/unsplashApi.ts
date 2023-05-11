@@ -1,8 +1,8 @@
 import { MainCardProps } from '@components/types';
 import { API } from '@constants';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { logUnsplashLimits, transformUnsplashPhoto } from './unsplashApi.helpers';
+import { createApi, fetchBaseQuery } from '../reduxToolkitRaw';
+import { transformUnsplashPhoto } from './unsplashApi.helpers';
 
 export interface UnsplashPhoto {
   id: string;
@@ -43,8 +43,7 @@ export const unsplashApi = createApi({
           orientation: API.PARAMS.ORIENTATION,
         },
       }),
-      transformResponse: (response: UnsplashResult, meta): MainCardProps[] => {
-        if (meta && meta.response) logUnsplashLimits(meta.response, 'PHOTOS');
+      transformResponse: (response: UnsplashResult): MainCardProps[] => {
         return response.results.map(transformUnsplashPhoto);
       },
     }),
@@ -52,8 +51,7 @@ export const unsplashApi = createApi({
       query: (id) => ({
         url: `${API.ENDPOINT.SINGLE_PHOTO}/${id}`,
       }),
-      transformResponse: (response: UnsplashPhoto, meta): MainCardProps => {
-        if (meta && meta.response) logUnsplashLimits(meta.response, 'SINGLE PHOTO');
+      transformResponse: (response: UnsplashPhoto): MainCardProps => {
         return transformUnsplashPhoto(response);
       },
     }),

@@ -16,7 +16,7 @@ interface MenuProps {
 
 const MobileMenu = ({ links, onLinkClick }: MenuProps) => {
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} data-testid="menu-mobile">
       {links.map(({ id, route, anchor }) => {
         return (
           <NavLink

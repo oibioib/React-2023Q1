@@ -1,5 +1,7 @@
 import { MenuLink } from '@components/types';
 
+export const APP_NAME = 'RS School - React-2023Q1';
+
 export const ROUTES = {
   MAIN: '/',
   ABOUT_US: 'about',
@@ -28,7 +30,7 @@ export const MENU_LINKS: MenuLink[] = [
   {
     id: 4,
     route: '/404',
-    title: 'Error 404',
+    title: '404',
     anchor: '404',
   },
 ];
